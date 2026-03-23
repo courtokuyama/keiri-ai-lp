@@ -74,8 +74,8 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.35)}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(36,113,212,.15);border:1px solid rgba(36,113,212,.35);color:#89b8f5;font-size:11px;padding:5px 14px;border-radius:20px;letter-spacing:.1em;font-weight:500;margin-bottom:24px}
 .hero-badge::before{content:'';width:6px;height:6px;background:#89b8f5;border-radius:50%;animation:blink 2s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
-.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(28px,3.8vw,48px);color:var(--white);font-weight:700;line-height:1.3;margin-bottom:16px;letter-spacing:-.01em}
-.hero-lead{font-size:clamp(15px,1.6vw,18px);color:rgba(255,255,255,.88);max-width:560px;line-height:1.85;margin-bottom:36px;font-weight:400;letter-spacing:.02em}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(32px,4.5vw,56px);color:var(--white);font-weight:700;line-height:1.25;margin-bottom:20px;letter-spacing:-.02em}
+.hero-lead{font-size:clamp(13px,1.3vw,15px);color:rgba(255,255,255,.72);max-width:520px;line-height:1.85;margin-bottom:36px;font-weight:400;letter-spacing:.02em}
 .hero-lead .hl-kw{color:var(--accent-hi);font-weight:500}
 .hero-cta-zone{display:flex;flex-direction:column;gap:14px}
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
@@ -209,6 +209,7 @@ section{padding:96px 0}
 .feat-card:last-child{border-right:none}
 .feat-card:hover{background:var(--gray-bg)}
 .feat-card::after{display:none}
+.feat-card-img{width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:20px;display:block}
 .feat-visual{display:none}
 .feat-num{font-family:'Noto Serif JP',serif;font-size:48px;color:var(--accent);font-weight:700;line-height:1;margin-bottom:16px;display:block;position:static}
 .feat-kw{font-family:'Noto Serif JP',serif;font-size:24px;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.3}
@@ -222,14 +223,24 @@ section{padding:96px 0}
 .feat-card.feat-full .feat-num{margin-bottom:0}
 
 /* ── PHASE CARDS (SERVICE) ── */
-.phase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--gray-line);border-radius:14px;overflow:visible;position:relative}
-.phase-card{padding:40px 32px;position:relative;border-right:1px solid var(--gray-line);transition:background .2s;background:var(--white)}
-.phase-card:first-child{border-radius:14px 0 0 14px}
-.phase-card:last-child{border-right:none;border-radius:0 14px 14px 0}
+.phase-wrap{display:flex;flex-direction:column;gap:24px}
+.phase-simul{position:relative}
+.phase-simul-label{text-align:center;margin-bottom:14px}
+.phase-simul-label span{display:inline-block;font-size:12px;color:var(--accent);background:var(--accent-lt);padding:5px 20px;border-radius:14px;letter-spacing:.08em;font-weight:600}
+.phase-simul-row{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--gray-line);border-radius:14px;overflow:hidden}
+.phase-simul-row .phase-card:first-child{border-right:1px solid var(--gray-line)}
+.phase-arrow-down{display:flex;justify-content:center;padding:8px 0}
+.phase-arrow-down span{width:36px;height:36px;border:1px solid var(--gray-line);border-radius:50%;background:var(--white);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:16px;font-weight:600}
+.phase-result{border:2px solid var(--accent);border-radius:14px;overflow:hidden}
+.phase-card{padding:40px 32px;position:relative;transition:background .2s;background:var(--white)}
 .phase-card:hover{background:var(--gray-bg)}
 .phase-period{display:inline-block;font-size:11px;color:var(--accent);background:var(--accent-lt);padding:4px 14px;border-radius:12px;letter-spacing:.05em;font-weight:500;margin-bottom:16px}
 .phase-card h3{font-size:14px;font-weight:500;color:var(--sub);margin-bottom:18px;line-height:1.6}
-.phase-card:not(:last-child)::after{content:'→';position:absolute;right:-15px;top:72px;width:30px;height:30px;background:var(--white);border:1px solid var(--gray-line);border-radius:50%;z-index:3;color:var(--accent);font-size:14px;line-height:30px;text-align:center;font-weight:600}
+.phase-result .phase-card{display:grid;grid-template-columns:auto 1fr;gap:0 32px;align-items:start}
+.phase-result .phase-top{grid-column:1/-1}
+.phase-result .phase-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;grid-column:1/-1}
+.phase-choice{background:var(--gray-bg);border-radius:10px;padding:20px 24px}
+.phase-choice-label{font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px}
 
 /* ══════════════════════════════
    MID CTA
@@ -328,12 +339,10 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
   .feat-card{border-right:none;border-bottom:1px solid var(--gray-line)}
   .feat-card:last-child{border-bottom:none}
   .feat-card.feat-full{grid-template-columns:1fr;grid-column:1}
-  .phase-grid{grid-template-columns:1fr}
-  .phase-card{border-right:none;border-bottom:1px solid var(--gray-line)}
-  .phase-card,.phase-card:first-child,.phase-card:last-child{border-radius:0}
-  .phase-card:first-child{border-radius:14px 14px 0 0}
-  .phase-card:last-child{border-bottom:none;border-radius:0 0 14px 14px}
-  .phase-card:not(:last-child)::after{display:none}
+  .phase-simul-row{grid-template-columns:1fr}
+  .phase-simul-row .phase-card:first-child{border-right:none;border-bottom:1px solid var(--gray-line)}
+  .phase-result .phase-cols{grid-template-columns:1fr}
+  .feat-card-img{height:120px}
   .how-flow{grid-template-columns:repeat(2,1fr);gap:24px}
   .how-flow::before{display:none}
   .mid-cta{flex-direction:column}
@@ -507,48 +516,72 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
 <!-- SERVICE (3つのフェーズ) -->
 <section id="service">
   <div class="sec" id="phases">
-    <span class="tag fi">HOW IT WORKS</span>
+    <span class="tag fi">SERVICE</span>
     <h2 class="sec-title fi">3ヶ月で、丸投げからAI化へ</h2>
     <p class="sec-lead fi">ただのBPOでは終わりません。3つのフェーズで、御社の経理をAIで自走させます。</p>
-    <div class="phase-grid fi">
-      <div class="phase-card">
-        <span class="phase-period">Month 1-3</span>
-        <div class="feat-num">01</div>
-        <div class="feat-kw">丸投げ</div>
-        <h3>まず、全部任せてください</h3>
-        <ul class="feat-checks">
-          <li>領収書・請求書の仕訳入力</li>
-          <li>銀行明細の自動照合・突合</li>
-          <li>請求書の作成・送付</li>
-          <li>振込データの作成</li>
-          <li>月次試算表・レポート作成</li>
-        </ul>
+    <div class="phase-wrap fi">
+      <!-- 01 + 02 同時進行 -->
+      <div class="phase-simul">
+        <div class="phase-simul-label"><span>Month 1〜3 ─ 同時進行</span></div>
+        <div class="phase-simul-row">
+          <div class="phase-card">
+            <span class="phase-period">お客様から見える側</span>
+            <div class="feat-num">01</div>
+            <div class="feat-kw">丸投げ</div>
+            <h3>まず、全部任せてください</h3>
+            <ul class="feat-checks">
+              <li>領収書・請求書の仕訳入力</li>
+              <li>銀行明細の自動照合・突合</li>
+              <li>請求書の作成・送付</li>
+              <li>振込データの作成</li>
+              <li>月次試算表・レポート作成</li>
+            </ul>
+          </div>
+          <div class="phase-card">
+            <span class="phase-period">裏側で同時進行</span>
+            <div class="feat-num">02</div>
+            <div class="feat-kw">AI構築</div>
+            <h3>BPOの裏側で、AIが学習中</h3>
+            <ul class="feat-checks">
+              <li>御社の取引パターンをAIが学習</li>
+              <li>仕訳ルール・科目判定の自動化</li>
+              <li>承認フロー・通知の最適化</li>
+              <li>会計ソフト連携の自動化設定</li>
+              <li>業務マニュアルの自動生成</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="phase-card">
-        <span class="phase-period">裏側で同時進行</span>
-        <div class="feat-num">02</div>
-        <div class="feat-kw">AI構築</div>
-        <h3>BPOの裏側で、AIが学習中</h3>
-        <ul class="feat-checks">
-          <li>御社の取引パターンをAIが学習</li>
-          <li>仕訳ルール・科目判定の自動化</li>
-          <li>承認フロー・通知の最適化</li>
-          <li>会計ソフト連携の自動化設定</li>
-          <li>業務マニュアルの自動生成</li>
-        </ul>
-      </div>
-      <div class="phase-card">
-        <span class="phase-period">3ヶ月後</span>
-        <div class="feat-num">03</div>
-        <div class="feat-kw">選択</div>
-        <h3>3ヶ月後、選んでください</h3>
-        <ul class="feat-checks">
-          <li>A: AIワークフローを買い取って内製化</li>
-          <li>B: 半額でBPOを継続（AIが動くので半額）</li>
-          <li>完成したワークフローは御社の資産</li>
-          <li>どちらを選んでもコストは下がる</li>
-          <li>内製化後もサポート可能</li>
-        </ul>
+      <!-- ↓ 矢印 -->
+      <div class="phase-arrow-down"><span>↓</span></div>
+      <!-- 03 選択 -->
+      <div class="phase-result">
+        <div class="phase-card">
+          <div class="phase-top">
+            <span class="phase-period">3ヶ月後</span>
+            <div class="feat-num">03</div>
+            <div class="feat-kw">選べる未来</div>
+            <h3>3ヶ月後、選んでください</h3>
+          </div>
+          <div class="phase-cols">
+            <div class="phase-choice">
+              <div class="phase-choice-label">A：買い取って内製化</div>
+              <ul class="feat-checks">
+                <li>AIワークフローを御社の資産に</li>
+                <li>BPOコスト自体がゼロに</li>
+                <li>内製化後もサポート可能</li>
+              </ul>
+            </div>
+            <div class="phase-choice">
+              <div class="phase-choice-label">B：半額でBPO継続</div>
+              <ul class="feat-checks">
+                <li>AIが動くのでコスト半減</li>
+                <li>引き続き丸投げでOK</li>
+                <li>完成ワークフローはいつでも買取可</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- 中間CTA -->
@@ -632,6 +665,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
     <p class="sec-lead fi">御社がやることは、書類を送るだけ。残りの全工程はきづけばAIが担います。</p>
     <div class="feat-grid fi">
       <div class="feat-card">
+        <img class="feat-card-img" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=400&h=240&q=80" alt="書類を送る">
         <div class="feat-num">1</div>
         <div class="feat-kw">送る</div>
         <h3>領収書・請求書をアプリ or メールで送付するだけ</h3>
@@ -642,6 +676,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
         </ul>
       </div>
       <div class="feat-card">
+        <img class="feat-card-img" src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=400&h=240&q=80" alt="チームが処理">
         <div class="feat-num">2</div>
         <div class="feat-kw">任せる</div>
         <h3>AI × 専門チームが仕訳・請求・振込まで全処理</h3>
@@ -652,6 +687,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
         </ul>
       </div>
       <div class="feat-card">
+        <img class="feat-card-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&h=240&q=80" alt="AI経理基盤が完成">
         <div class="feat-num">3</div>
         <div class="feat-kw">手に入る</div>
         <h3>3ヶ月後、御社専用のAI経理基盤が完成している</h3>
@@ -804,7 +840,8 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
 </section>
 <footer>
   <p>&copy; 2025 きづけばAI Inc. All rights reserved.</p>
-  <p style="margin-top:6px">プライバシーポリシー　利用規約　特定商取引法に基づく表記</p>
+  <p style="margin-top:6px">contact@bewibe.com</p>
+  <p style="margin-top:4px">プライバシーポリシー　利用規約　特定商取引法に基づく表記</p>
 </footer>
 
 <script>
