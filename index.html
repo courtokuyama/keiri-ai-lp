@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>きづけばAI – 気がつけば、AI導入まで終わっていた。</title>
+<title>きづけばAI経理 – 気がつけば、AI導入まで終わっていた。</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <script async src="https://tally.so/widgets/embed.js"></script>
 <style>
@@ -130,8 +130,8 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.35)}
 section{padding:96px 0}
 .sec{max-width:var(--max-w);margin:0 auto;padding:0 5%}
 .tag{font-size:11px;letter-spacing:.14em;color:var(--accent);font-weight:700;text-transform:uppercase;margin-bottom:12px;display:block}
-.sec-title{font-family:'Noto Serif JP',serif;font-size:clamp(24px,3.5vw,38px);color:var(--text);font-weight:700;line-height:1.4;margin-bottom:12px}
-.sec-lead{font-size:16px;color:var(--sub);line-height:1.9;max-width:560px;margin-bottom:52px;font-weight:300}
+.sec-title{font-family:'Noto Serif JP',serif;font-size:clamp(28px,4vw,44px);color:var(--text);font-weight:700;line-height:1.4;margin-bottom:14px}
+.sec-lead{font-size:17px;color:var(--sub);line-height:1.9;max-width:600px;margin-bottom:52px;font-weight:300}
 
 /* ══════════════════════════════
    PROBLEMS — ループ図 + カード
@@ -146,8 +146,8 @@ section{padding:96px 0}
 .prob-card:hover,.prob-card.active{box-shadow:0 6px 24px rgba(0,0,0,.08);transform:translateY(-2px);border-color:var(--accent)}
 .prob-icon-wrap{width:36px;height:36px;min-width:36px;background:var(--accent-lt);border-radius:8px;display:flex;align-items:center;justify-content:center}
 .prob-icon-wrap svg{width:18px;height:18px}
-.prob-card h3{font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px;line-height:1.4}
-.prob-card p{font-size:12px;color:var(--muted);line-height:1.6}
+.prob-card h3{font-size:16px;font-weight:600;color:var(--text);margin-bottom:5px;line-height:1.4}
+.prob-card p{font-size:14px;color:var(--muted);line-height:1.65}
 
 /* ══════════════════════════════
    SERVICE VISUAL — 左イラスト右リスト
@@ -214,34 +214,29 @@ section{padding:96px 0}
 .feat-visual{display:none}
 .feat-num{font-family:'Noto Serif JP',serif;font-size:48px;color:var(--accent);font-weight:700;line-height:1;margin-bottom:16px;display:block;position:static}
 .feat-kw{font-family:'Noto Serif JP',serif;font-size:24px;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.3}
-.feat-card h3{font-size:14px;font-weight:500;color:var(--sub);margin-bottom:18px;line-height:1.6;position:relative;z-index:1}
+.feat-card h3{font-size:15px;font-weight:500;color:var(--sub);margin-bottom:18px;line-height:1.6;position:relative;z-index:1}
 .feat-card p{display:none}
 .feat-checks{list-style:none;display:flex;flex-direction:column;gap:8px}
-.feat-checks li{font-size:13px;color:var(--sub);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.feat-checks li{font-size:14px;color:var(--sub);display:flex;align-items:flex-start;gap:8px;line-height:1.55}
 .feat-checks li::before{content:'';width:16px;height:16px;min-width:16px;margin-top:1px;border-radius:50%;background:var(--accent-lt) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M2.5 7l3 3 6-6' stroke='%232471d4' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/10px no-repeat}
 /* 4番目カードは全幅 */
 .feat-card.feat-full{grid-column:1/-1;border-right:none;border-top:1px solid var(--gray-line);display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center}
 .feat-card.feat-full .feat-num{margin-bottom:0}
 
-/* ── PHASE CARDS (SERVICE) ── */
-.phase-wrap{display:flex;flex-direction:column;gap:24px}
-.phase-simul{position:relative}
-.phase-simul-label{text-align:center;margin-bottom:14px}
-.phase-simul-label span{display:inline-block;font-size:12px;color:var(--accent);background:var(--accent-lt);padding:5px 20px;border-radius:14px;letter-spacing:.08em;font-weight:600}
-.phase-simul-row{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--gray-line);border-radius:14px;overflow:hidden}
-.phase-simul-row .phase-card:first-child{border-right:1px solid var(--gray-line)}
-.phase-arrow-down{display:flex;justify-content:center;padding:8px 0}
-.phase-arrow-down span{width:36px;height:36px;border:1px solid var(--gray-line);border-radius:50%;background:var(--white);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:16px;font-weight:600}
-.phase-result{border:2px solid var(--accent);border-radius:14px;overflow:hidden}
-.phase-card{padding:40px 32px;position:relative;transition:background .2s;background:var(--white)}
-.phase-card:hover{background:var(--gray-bg)}
-.phase-period{display:inline-block;font-size:11px;color:var(--accent);background:var(--accent-lt);padding:4px 14px;border-radius:12px;letter-spacing:.05em;font-weight:500;margin-bottom:16px}
-.phase-card h3{font-size:14px;font-weight:500;color:var(--sub);margin-bottom:18px;line-height:1.6}
-.phase-result .phase-card{display:grid;grid-template-columns:auto 1fr;gap:0 32px;align-items:start}
-.phase-result .phase-top{grid-column:1/-1}
-.phase-result .phase-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;grid-column:1/-1}
-.phase-choice{background:var(--gray-bg);border-radius:10px;padding:20px 24px}
-.phase-choice-label{font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px}
+/* ── SERVICE CARDS (3-column) ── */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--gray-line);border-radius:14px;overflow:hidden}
+.svc-card{padding:40px 32px;position:relative;border-right:1px solid var(--gray-line);transition:background .2s;background:var(--white)}
+.svc-card:last-child{border-right:none}
+.svc-card:hover{background:var(--gray-bg)}
+.svc-card h3{font-size:15px;font-weight:500;color:var(--sub);margin-bottom:18px;line-height:1.6}
+.svc-benefits{margin-top:48px}
+.svc-benefits-title{font-family:'Noto Serif JP',serif;font-size:24px;font-weight:700;color:var(--text);margin-bottom:8px;text-align:center}
+.svc-benefits-sub{font-size:15px;color:var(--sub);text-align:center;margin-bottom:32px}
+.svc-benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc-benefit{background:var(--gray-bg);border-radius:10px;padding:28px 24px;text-align:center}
+.svc-benefit-icon{font-size:32px;margin-bottom:12px;display:block}
+.svc-benefit h4{font-family:'Noto Serif JP',serif;font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px}
+.svc-benefit p{font-size:14px;color:var(--sub);line-height:1.65}
 
 /* ══════════════════════════════
    MID CTA
@@ -341,9 +336,10 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
   .feat-card{border-right:none;border-bottom:1px solid var(--gray-line)}
   .feat-card:last-child{border-bottom:none}
   .feat-card.feat-full{grid-template-columns:1fr;grid-column:1}
-  .phase-simul-row{grid-template-columns:1fr}
-  .phase-simul-row .phase-card:first-child{border-right:none;border-bottom:1px solid var(--gray-line)}
-  .phase-result .phase-cols{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:1fr}
+  .svc-card{border-right:none;border-bottom:1px solid var(--gray-line)}
+  .svc-card:last-child{border-bottom:none}
+  .svc-benefits-grid{grid-template-columns:1fr}
   .feat-card-img{height:120px}
   .how-flow{grid-template-columns:repeat(2,1fr);gap:24px}
   .how-flow::before{display:none}
@@ -391,7 +387,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
 <div class="float-cta" id="floatCta">
   <div class="float-cta-inner">
     <div class="float-cta-text">
-      <strong>きづけばAI — 丸投げから、AI化へ。</strong>
+      <strong>きづけばAI経理 — 丸投げから、AI化へ。</strong>
       初期費用なし・3ヶ月でAI導入完了
     </div>
     <div class="float-cta-btns">
@@ -521,68 +517,64 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
     <span class="tag fi">SERVICE</span>
     <h2 class="sec-title fi">3ヶ月で、丸投げからAI化へ</h2>
     <p class="sec-lead fi">ただのBPOでは終わりません。3つのフェーズで、御社の経理をAIで自走させます。</p>
-    <div class="phase-wrap fi">
-      <!-- 01 + 02 同時進行 -->
-      <div class="phase-simul">
-        <div class="phase-simul-label"><span>Month 1〜3 ─ 同時進行</span></div>
-        <div class="phase-simul-row">
-          <div class="phase-card">
-            <span class="phase-period">お客様から見える側</span>
-            <div class="feat-num">01</div>
-            <div class="feat-kw">丸投げ</div>
-            <h3>まず、全部任せてください</h3>
-            <ul class="feat-checks">
-              <li>領収書・請求書の仕訳入力</li>
-              <li>銀行明細の自動照合・突合</li>
-              <li>請求書の作成・送付</li>
-              <li>振込データの作成</li>
-              <li>月次試算表・レポート作成</li>
-            </ul>
-          </div>
-          <div class="phase-card">
-            <span class="phase-period">裏側で同時進行</span>
-            <div class="feat-num">02</div>
-            <div class="feat-kw">AI構築</div>
-            <h3>BPOの裏側で、AIが学習中</h3>
-            <ul class="feat-checks">
-              <li>御社の取引パターンをAIが学習</li>
-              <li>仕訳ルール・科目判定の自動化</li>
-              <li>承認フロー・通知の最適化</li>
-              <li>会計ソフト連携の自動化設定</li>
-              <li>業務マニュアルの自動生成</li>
-            </ul>
-          </div>
-        </div>
+    <div class="svc-grid fi">
+      <div class="svc-card">
+        <div class="feat-num">01</div>
+        <div class="feat-kw">経理BPO</div>
+        <h3>経理業務をまるごと代行</h3>
+        <ul class="feat-checks">
+          <li>領収書・請求書の仕訳入力</li>
+          <li>銀行明細の自動照合・突合</li>
+          <li>請求書の作成・送付</li>
+          <li>振込データの作成</li>
+          <li>月次試算表・レポート作成</li>
+        </ul>
       </div>
-      <!-- ↓ 矢印 -->
-      <div class="phase-arrow-down"><span>↓</span></div>
-      <!-- 03 選択 -->
-      <div class="phase-result">
-        <div class="phase-card">
-          <div class="phase-top">
-            <span class="phase-period">3ヶ月後</span>
-            <div class="feat-num">03</div>
-            <div class="feat-kw">選べる未来</div>
-            <h3>3ヶ月後、選んでください</h3>
-          </div>
-          <div class="phase-cols">
-            <div class="phase-choice">
-              <div class="phase-choice-label">A：買い取って内製化</div>
-              <ul class="feat-checks">
-                <li>AIワークフローを御社の資産に</li>
-                <li>BPOコスト自体がゼロに</li>
-                <li>内製化後もサポート可能</li>
-              </ul>
-            </div>
-            <div class="phase-choice">
-              <div class="phase-choice-label">B：半額でBPO継続</div>
-              <ul class="feat-checks">
-                <li>AIが動くのでコスト半減</li>
-                <li>引き続き丸投げでOK</li>
-                <li>完成ワークフローはいつでも買取可</li>
-              </ul>
-            </div>
-          </div>
+      <div class="svc-card">
+        <div class="feat-num">02</div>
+        <div class="feat-kw">AI構築</div>
+        <h3>BPOと同時にAIワークフローを構築</h3>
+        <ul class="feat-checks">
+          <li>御社の取引パターンをAIが学習</li>
+          <li>仕訳ルール・科目判定の自動化</li>
+          <li>承認フロー・通知の最適化</li>
+          <li>会計ソフト連携の自動化設定</li>
+          <li>業務マニュアルの自動生成</li>
+        </ul>
+      </div>
+      <div class="svc-card">
+        <div class="feat-num">03</div>
+        <div class="feat-kw">納品</div>
+        <h3>完成したAIワークフローを御社の資産に</h3>
+        <ul class="feat-checks">
+          <li>AIワークフロー一式を買い取り</li>
+          <li>業務マニュアル・運用ガイド付き</li>
+          <li>社内研修（オンライン）込み</li>
+          <li>導入後1ヶ月サポート</li>
+          <li>継続BPOへの切替もいつでも可</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 導入メリット -->
+    <div class="svc-benefits fi">
+      <div class="svc-benefits-title">すべて導入すると</div>
+      <div class="svc-benefits-sub">BPO × AI構築 × 納品で実現できること</div>
+      <div class="svc-benefits-grid">
+        <div class="svc-benefit">
+          <span class="svc-benefit-icon">📉</span>
+          <h4>引き継ぎコスト激減</h4>
+          <p>マニュアル・ワークフローが構築済みのため、人の入れ替わりに強い体制が手に入る</p>
+        </div>
+        <div class="svc-benefit">
+          <span class="svc-benefit-icon">🤖</span>
+          <h4>経理の人員削減が可能</h4>
+          <p>AIが日常業務を処理するため、経理専任者なしでも回る仕組みを構築</p>
+        </div>
+        <div class="svc-benefit">
+          <span class="svc-benefit-icon">⚡</span>
+          <h4>SaaS化で即導入</h4>
+          <p>完成済みのワークフローを納品するため、ゼロからAI構築するより圧倒的に早い</p>
         </div>
       </div>
     </div>
@@ -605,7 +597,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
   <div class="sec">
     <span class="tag fi">COMPARISON</span>
     <h2 class="sec-title fi">他の選択肢との違い</h2>
-    <p class="sec-lead fi">BPO、派遣、AI導入支援…それぞれの限界と、きづけばAIの位置づけ。</p>
+    <p class="sec-lead fi">BPO、派遣、AI導入支援…それぞれの限界と、きづけばAI経理の位置づけ。</p>
     <div class="cmp-wrap fi">
       <table class="cmp-table">
         <thead>
@@ -614,7 +606,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
             <th class="th-other">通常のBPO</th>
             <th class="th-other">経理派遣</th>
             <th class="th-other">AI導入コンサル</th>
-            <th class="th-ours">きづけばAI</th>
+            <th class="th-ours">きづけばAI経理</th>
           </tr>
         </thead>
         <tbody>
@@ -664,7 +656,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
   <div class="sec">
     <span class="tag fi">HOW IT WORKS</span>
     <h2 class="sec-title fi">送るだけ、あとはお任せ</h2>
-    <p class="sec-lead fi">御社がやることは、書類を送るだけ。残りの全工程はきづけばAIが担います。</p>
+    <p class="sec-lead fi">御社がやることは、書類を送るだけ。残りの全工程はきづけばAI経理が担います。</p>
     <div class="feat-grid fi">
       <div class="feat-card">
         <img class="feat-card-img" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=400&h=240&q=80" alt="書類を送る">
@@ -707,7 +699,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
 <section class="feat-bg">
   <div class="sec">
     <span class="tag fi">WHY US</span>
-    <h2 class="sec-title fi">きづけばAIが選ばれる理由</h2>
+    <h2 class="sec-title fi">きづけばAI経理が選ばれる理由</h2>
     <p class="sec-lead fi"></p>
     <div class="feat-grid fi">
       <div class="feat-card">
@@ -725,7 +717,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
         <div class="feat-kw">コスト↓</div>
         <h3>時間が経つほどコストが下がる</h3>
         <ul class="feat-checks">
-          <li>通常BPOは毎月同じコスト。きづけばAIは3ヶ月後に半減</li>
+          <li>通常BPOは毎月同じコスト。きづけばAI経理は3ヶ月後に半減</li>
           <li>AI化で人的工数が激減するから実現できる</li>
           <li>内製化すればBPOコスト自体がゼロに</li>
         </ul>
@@ -752,42 +744,42 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
     <p class="sec-lead fi">AI化で時間が経つほどコストが下がる、新しい料金モデル。</p>
     <div class="price-grid fi">
       <div class="plan">
-        <div class="plan-name">Phase 1 — BPO期間（3ヶ月）</div>
-        <div class="plan-price">¥98,000〜</div>
-        <p class="plan-note">月次取引量に応じて ／ 市場相場の約30%OFF</p>
+        <div class="plan-name">経理BPOのみ</div>
+        <div class="plan-price">¥98,000〜<span style="font-size:16px;font-weight:400;color:var(--muted)">/月</span></div>
+        <p class="plan-note">AI導入なし・経理代行のみ</p>
         <ul class="plan-list">
-          <li>経理業務の完全代行</li>
-          <li>AI×専門チームのハイブリッド処理</li>
-          <li>月次レポート納品</li>
-          <li>AIワークフロー構築（並行）</li>
+          <li>仕訳入力・請求書処理・振込作成</li>
+          <li>銀行明細の照合・突合</li>
+          <li>月次試算表・レポート納品</li>
           <li>会計ソフト連携設定</li>
+          <li>AI×専門チームのハイブリッド処理</li>
         </ul>
         <a href="#contact" class="plan-btn plan-btn-out" style="text-decoration:none;display:block;text-align:center">資料請求</a>
       </div>
       <div class="plan feat">
         <div class="plan-badge">おすすめ</div>
-        <div class="plan-name">Phase 2A — AI内製化パック</div>
+        <div class="plan-name">BPO + AI導入パック</div>
         <div class="plan-price">¥298,000〜</div>
-        <p class="plan-note">完成したAIワークフローを御社の資産に</p>
+        <p class="plan-note">BPO（¥98,000〜/月 × 3ヶ月）+ AIワークフロー構築・納品</p>
         <ul class="plan-list">
-          <li>カスタムAIワークフロー一式</li>
+          <li>上記BPOの全業務（3ヶ月間）</li>
+          <li>御社専用AIワークフロー構築・納品</li>
           <li>業務マニュアル・運用ガイド</li>
-          <li>会計ソフト自動連携設定</li>
-          <li>導入後1ヶ月サポート</li>
           <li>社内研修（オンライン）</li>
+          <li>導入後1ヶ月サポート</li>
         </ul>
         <a href="#contact" class="plan-btn plan-btn-fill" style="text-decoration:none;display:block;text-align:center">資料請求</a>
       </div>
       <div class="plan">
-        <div class="plan-name">Phase 2B — 継続BPO</div>
-        <div class="plan-price">¥49,800〜</div>
-        <p class="plan-note">AI化済みだから、Phase 1の約半額</p>
+        <div class="plan-name">AI化後の継続BPO</div>
+        <div class="plan-price">¥49,800〜<span style="font-size:16px;font-weight:400;color:var(--muted)">/月</span></div>
+        <p class="plan-note">AI化済みだから約半額で継続</p>
         <ul class="plan-list">
-          <li>Phase 1と同じ業務範囲</li>
-          <li>AIが処理→人がチェックの効率体制</li>
-          <li>月次レポート継続</li>
-          <li>制度変更の自動アップデート</li>
-          <li>いつでも内製化に切り替え可能</li>
+          <li>経理BPOと同じ業務範囲</li>
+          <li>AIが自動処理→人がチェックの効率体制</li>
+          <li>月次レポート継続納品</li>
+          <li>制度変更（インボイス等）の自動対応</li>
+          <li>いつでもAIワークフロー買取に切替可</li>
         </ul>
         <a href="#contact" class="plan-btn plan-btn-out" style="text-decoration:none;display:block;text-align:center">資料請求</a>
       </div>
@@ -836,12 +828,12 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
       </div>
     </div>
     <div class="final-form">
-      <iframe data-tally-src="https://tally.so/r/q4PoP8?transparentBackground=1&hideTitle=1" width="100%" height="480" frameborder="0" marginheight="0" marginwidth="0" title="きづけばAI 資料請求フォーム"></iframe>
+      <iframe data-tally-src="https://tally.so/r/q4PoP8?transparentBackground=1&hideTitle=1" width="100%" height="480" frameborder="0" marginheight="0" marginwidth="0" title="きづけばAI経理 資料請求フォーム"></iframe>
     </div>
   </div>
 </section>
 <footer>
-  <p>&copy; 2025 きづけばAI Inc. All rights reserved.</p>
+  <p>&copy; 2025 きづけばAI経理 Inc. All rights reserved.</p>
   <p style="margin-top:6px">contact@bewibe.com</p>
   <p style="margin-top:4px">プライバシーポリシー　利用規約　特定商取引法に基づく表記</p>
 </footer>
