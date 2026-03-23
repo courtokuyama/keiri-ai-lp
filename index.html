@@ -146,7 +146,7 @@ section{padding:96px 0}
 .prob-card:hover,.prob-card.active{box-shadow:0 6px 24px rgba(0,0,0,.08);transform:translateY(-2px);border-color:var(--accent)}
 .prob-icon-wrap{width:36px;height:36px;min-width:36px;background:var(--accent-lt);border-radius:8px;display:flex;align-items:center;justify-content:center}
 .prob-icon-wrap svg{width:18px;height:18px}
-.prob-card h3{font-size:16px;font-weight:600;color:var(--text);margin-bottom:5px;line-height:1.4}
+.prob-card h3{font-size:18px;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.4}
 .prob-card p{font-size:14px;color:var(--muted);line-height:1.65}
 
 /* ══════════════════════════════
@@ -229,14 +229,17 @@ section{padding:96px 0}
 .svc-card:last-child{border-right:none}
 .svc-card:hover{background:var(--gray-bg)}
 .svc-card h3{font-size:15px;font-weight:500;color:var(--sub);margin-bottom:18px;line-height:1.6}
-.svc-benefits{margin-top:48px}
-.svc-benefits-title{font-family:'Noto Serif JP',serif;font-size:24px;font-weight:700;color:var(--text);margin-bottom:8px;text-align:center}
-.svc-benefits-sub{font-size:15px;color:var(--sub);text-align:center;margin-bottom:32px}
-.svc-benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.svc-benefit{background:var(--gray-bg);border-radius:10px;padding:28px 24px;text-align:center}
-.svc-benefit-icon{font-size:32px;margin-bottom:12px;display:block}
-.svc-benefit h4{font-family:'Noto Serif JP',serif;font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px}
-.svc-benefit p{font-size:14px;color:var(--sub);line-height:1.65}
+.svc-phase-label{font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.12em;color:var(--accent);font-weight:700;text-transform:uppercase;margin-bottom:12px;display:block}
+.svc-benefits{margin-top:56px;background:var(--navy);border-radius:16px;padding:56px 48px;position:relative;overflow:hidden}
+.svc-benefits::before{content:'';position:absolute;top:-40%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(36,113,212,.18) 0%,transparent 65%);pointer-events:none}
+.svc-benefits-title{font-family:'Noto Serif JP',serif;font-size:28px;font-weight:700;color:var(--white);margin-bottom:6px;text-align:center;position:relative;z-index:1}
+.svc-benefits-sub{font-size:15px;color:rgba(255,255,255,.55);text-align:center;margin-bottom:40px;position:relative;z-index:1}
+.svc-benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;z-index:1}
+.svc-benefit{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:32px 28px;text-align:center;transition:background .2s}
+.svc-benefit:hover{background:rgba(255,255,255,.1)}
+.svc-benefit-icon{font-size:36px;margin-bottom:14px;display:block}
+.svc-benefit h4{font-family:'Noto Serif JP',serif;font-size:19px;font-weight:700;color:var(--white);margin-bottom:10px}
+.svc-benefit p{font-size:14px;color:rgba(255,255,255,.6);line-height:1.7}
 
 /* ══════════════════════════════
    MID CTA
@@ -339,6 +342,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
   .svc-grid{grid-template-columns:1fr}
   .svc-card{border-right:none;border-bottom:1px solid var(--gray-line)}
   .svc-card:last-child{border-bottom:none}
+  .svc-benefits{padding:40px 24px}
   .svc-benefits-grid{grid-template-columns:1fr}
   .feat-card-img{height:120px}
   .how-flow{grid-template-columns:repeat(2,1fr);gap:24px}
@@ -358,7 +362,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
 <!-- NAV -->
 <nav id="top-nav">
   <div class="nav-inner">
-    <div class="logo">きづけば<span>AI</span></div>
+    <div class="logo">きづけば<span>AI</span>経理</div>
     <div class="nav-links">
       <a href="#problems">課題</a>
       <a href="#service">サービス</a>
@@ -519,6 +523,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
     <p class="sec-lead fi">ただのBPOでは終わりません。3つのフェーズで、御社の経理をAIで自走させます。</p>
     <div class="svc-grid fi">
       <div class="svc-card">
+        <span class="svc-phase-label">Phase 01</span>
         <div class="feat-num">01</div>
         <div class="feat-kw">経理BPO</div>
         <h3>経理業務をまるごと代行</h3>
@@ -531,6 +536,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
         </ul>
       </div>
       <div class="svc-card">
+        <span class="svc-phase-label">Phase 02</span>
         <div class="feat-num">02</div>
         <div class="feat-kw">AI構築</div>
         <h3>BPOと同時にAIワークフローを構築</h3>
@@ -543,6 +549,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
         </ul>
       </div>
       <div class="svc-card">
+        <span class="svc-phase-label">Phase 03</span>
         <div class="feat-num">03</div>
         <div class="feat-kw">納品</div>
         <h3>完成したAIワークフローを御社の資産に</h3>
@@ -833,9 +840,9 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
   </div>
 </section>
 <footer>
-  <p>&copy; 2025 きづけばAI経理 Inc. All rights reserved.</p>
+  <p>&copy; 2025 株式会社BEWIBE. All rights reserved.</p>
   <p style="margin-top:6px">contact@bewibe.com</p>
-  <p style="margin-top:4px">プライバシーポリシー　利用規約　特定商取引法に基づく表記</p>
+  <p style="margin-top:4px"><a href="company.html" style="color:inherit;text-decoration:none">運営会社</a>　<a href="privacy.html" style="color:inherit;text-decoration:none">プライバシーポリシー</a>　<a href="terms.html" style="color:inherit;text-decoration:none">利用規約</a></p>
 </footer>
 
 <script>
