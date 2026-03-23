@@ -74,7 +74,8 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.35)}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(36,113,212,.15);border:1px solid rgba(36,113,212,.35);color:#89b8f5;font-size:11px;padding:5px 14px;border-radius:20px;letter-spacing:.1em;font-weight:500;margin-bottom:24px}
 .hero-badge::before{content:'';width:6px;height:6px;background:#89b8f5;border-radius:50%;animation:blink 2s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
-.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(32px,4.5vw,56px);color:var(--white);font-weight:700;line-height:1.25;margin-bottom:20px;letter-spacing:-.02em}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(28px,3.6vw,46px);color:var(--white);font-weight:700;line-height:1.3;margin-bottom:20px;letter-spacing:-.02em}
+.sp-only{display:none}
 .hero-lead{font-size:clamp(13px,1.3vw,15px);color:rgba(255,255,255,.72);max-width:520px;line-height:1.85;margin-bottom:36px;font-weight:400;letter-spacing:.02em}
 .hero-lead .hl-kw{color:var(--accent-hi);font-weight:500}
 .hero-cta-zone{display:flex;flex-direction:column;gap:14px}
@@ -331,6 +332,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
   .nav-btn-doc{display:none}
 }
 @media(max-width:720px){
+  .sp-only{display:block}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
   .stat:nth-child(2){border-right:none}
   .stat:nth-child(3){border-top:1px solid var(--gray-line)}
@@ -405,7 +407,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
   <div class="hero-inner">
     <div class="hero-text">
       <div class="hero-badge">経理BPO × AI導入 ── 中小企業特化</div>
-      <h1>気がつけば、<br>AI導入まで終わっていた。</h1>
+      <h1>気がつけば、<br>AI導入まで<br class="sp-only">終わっていた。</h1>
       <p class="hero-lead">経理を丸投げしている<span class="hl-kw">3ヶ月</span>の間に、<br>裏側で<span class="hl-kw">AIワークフロー</span>を構築。<br>預けたのは経理。戻ってきたのは、<span class="hl-kw">AI経理基盤</span>。</p>
       <div class="hero-cta-zone">
         <div class="hero-btns">
