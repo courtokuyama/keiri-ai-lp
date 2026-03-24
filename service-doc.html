@@ -17,124 +17,136 @@
   --text:#0f172a;--sub:#475569;--muted:#94a3b8;--white:#fff;
 }
 body{font-family:'Noto Sans JP','DM Sans',sans-serif;color:var(--text);background:#e2e8f0;line-height:1.6}
-.slide{width:1280px;height:720px;background:var(--white);margin:24px auto;padding:44px 64px;position:relative;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.08);page-break-after:always}
+
+/* ── SLIDE: flexbox で垂直分散 ── */
+.slide{
+  width:1280px;height:720px;background:var(--white);
+  margin:24px auto;position:relative;overflow:hidden;
+  box-shadow:0 4px 24px rgba(0,0,0,.08);page-break-after:always;
+  /* 上下左右に十分な余白（約15%） */
+  padding:56px 80px 48px;
+  display:flex;flex-direction:column;
+}
 .slide-dark{background:var(--navy);color:var(--white)}
-.sf{position:absolute;bottom:18px;left:64px;right:64px;display:flex;justify-content:space-between;align-items:center}
+
+/* コンテンツを中央〜均等に配置するユーティリティ */
+.s-body{flex:1;display:flex;flex-direction:column;justify-content:center}
+.s-body.top{justify-content:flex-start}
+.s-body.spread{justify-content:space-between}
+.s-body.spread-even{justify-content:space-evenly}
+
+/* ── FOOTER ── */
+.sf{display:flex;justify-content:space-between;align-items:center;padding-top:12px;flex-shrink:0}
 .sf .logo-sm{font-family:'Noto Serif JP',serif;font-size:12px;font-weight:700;color:var(--accent)}
 .sf .logo-sm em{font-style:normal;color:var(--gold)}
 .sf .pg{font-size:10px;color:var(--muted);font-family:'DM Sans',sans-serif}
 .slide-dark .sf .logo-sm{color:var(--accent-hi)}
 .slide-dark .sf .pg{color:rgba(255,255,255,.3)}
+
+/* ── HEADER ── */
+.s-head{flex-shrink:0;margin-bottom:auto}
 .tag{font-size:10px;font-weight:700;color:var(--accent);letter-spacing:.18em;font-family:'DM Sans',sans-serif;margin-bottom:6px;display:block}
 .slide-dark .tag{color:var(--accent-hi)}
-.stitle{font-size:32px;font-weight:900;line-height:1.3;margin-bottom:4px}
+.stitle{font-size:30px;font-weight:900;line-height:1.35;margin-bottom:6px}
 .slide-dark .stitle{color:var(--white)}
-.ssub{font-size:13px;color:var(--sub);line-height:1.7;margin-top:4px}
+.ssub{font-size:13px;color:var(--sub);line-height:1.7}
 .slide-dark .ssub{color:rgba(255,255,255,.55)}
-.ck::before{content:'✓';color:var(--accent);font-weight:700;margin-right:6px;font-size:11px}
 
-/* cover */
+/* ── COVER ── */
 .cover-bg{position:absolute;inset:0;z-index:0}
-.cover-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.25)}
-.cover-content{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:center}
-.cover-logo{font-family:'Noto Serif JP',serif;font-size:28px;font-weight:700;color:var(--white);margin-bottom:28px}
+.cover-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.22)}
+.cover-inner{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center}
+.cover-logo{font-family:'Noto Serif JP',serif;font-size:28px;font-weight:700;color:var(--white);margin-bottom:24px}
 .cover-logo em{font-style:normal;color:var(--gold)}
-.cover-tag{font-size:10px;font-weight:600;color:var(--accent-hi);letter-spacing:.22em;margin-bottom:16px}
-.cover-title{font-size:46px;font-weight:900;color:var(--white);line-height:1.3;margin-bottom:20px}
-.cover-desc{font-size:15px;color:rgba(255,255,255,.6);line-height:1.9;max-width:480px}
-.cover-stats{position:absolute;bottom:80px;right:64px;display:flex;gap:16px;z-index:1}
-.cover-stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:16px 24px;text-align:center;min-width:130px}
-.cover-stat strong{font-size:24px;font-weight:900;color:var(--white);display:block;font-family:'DM Sans',sans-serif}
-.cover-stat span{font-size:10px;color:rgba(255,255,255,.45)}
+.cover-tag{font-size:10px;font-weight:600;color:var(--accent-hi);letter-spacing:.22em;margin-bottom:14px}
+.cover-title{font-size:44px;font-weight:900;color:var(--white);line-height:1.3;margin-bottom:18px}
+.cover-desc{font-size:15px;color:rgba(255,255,255,.6);line-height:1.9;max-width:500px}
+.cover-stats{position:absolute;bottom:56px;right:0;display:flex;gap:14px;z-index:1}
+.cover-stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px 22px;text-align:center;min-width:120px}
+.cover-stat strong{font-size:22px;font-weight:900;color:var(--white);display:block;font-family:'DM Sans',sans-serif}
+.cover-stat span{font-size:10px;color:rgba(255,255,255,.4)}
 
-/* toc */
-.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;margin-top:24px}
-.toc-item{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--gray-line)}
-.toc-num{width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:'DM Sans',sans-serif;flex-shrink:0}
-.toc-label{font-size:13px;font-weight:500;flex:1}
-.toc-page{font-size:11px;color:var(--muted);font-family:'DM Sans',sans-serif}
-
-/* market */
-.market-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
-.market-card{background:var(--gray-bg);border:1px solid var(--gray-line);border-radius:8px;padding:18px 16px;text-align:center}
-.market-card .n{font-size:36px;font-weight:900;color:var(--accent);font-family:'DM Sans','Noto Sans JP',sans-serif;line-height:1.1}
+/* ── MARKET ── */
+.market-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.market-card{background:var(--gray-bg);border:1px solid var(--gray-line);border-radius:10px;padding:20px 16px;text-align:center}
+.market-card .n{font-size:38px;font-weight:900;color:var(--accent);font-family:'DM Sans','Noto Sans JP',sans-serif;line-height:1.1}
 .market-card .n em{font-style:normal;font-size:16px}
-.market-card .l{font-size:11px;color:var(--sub);margin-top:4px;line-height:1.4}
-.market-card .src{font-size:9px;color:var(--muted);margin-top:3px}
+.market-card .l{font-size:11px;color:var(--sub);margin-top:6px;line-height:1.4}
+.market-card .src{font-size:9px;color:var(--muted);margin-top:4px}
 
-/* problems */
-.prob-2col{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
-.prob-card{background:var(--red-lt);border:1px solid #fecaca;border-radius:8px;padding:14px 16px;display:flex;gap:10px;align-items:flex-start}
-.prob-num{width:24px;height:24px;border-radius:50%;background:var(--red);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
-.prob-card h4{font-size:14px;font-weight:700;line-height:1.35;margin-bottom:2px}
-.prob-card p{font-size:11px;color:var(--sub);line-height:1.5}
-.prob-bottom{background:var(--navy);border-radius:8px;padding:16px 24px;margin-top:12px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:center}
-.prob-bottom .n{font-size:28px;font-weight:900;color:var(--white);font-family:'DM Sans',sans-serif}
-.prob-bottom .l{font-size:10px;color:rgba(255,255,255,.45);margin-top:2px}
+/* ── PROBLEMS ── */
+.prob-2col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.prob-card{background:var(--red-lt);border:1px solid #fecaca;border-radius:8px;padding:16px 18px;display:flex;gap:12px;align-items:flex-start}
+.prob-num{width:26px;height:26px;border-radius:50%;background:var(--red);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:1px}
+.prob-card h4{font-size:14px;font-weight:700;line-height:1.35;margin-bottom:3px}
+.prob-card p{font-size:11px;color:var(--sub);line-height:1.55}
+.prob-bottom{background:var(--navy);border-radius:8px;padding:14px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:center}
+.prob-bottom .n{font-size:26px;font-weight:900;color:var(--white);font-family:'DM Sans',sans-serif}
+.prob-bottom .l{font-size:10px;color:rgba(255,255,255,.4);margin-top:2px}
 
-/* about */
-.about-2col{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;margin-top:16px;align-items:start}
-.about-title{font-size:26px;font-weight:900;line-height:1.4;margin-bottom:10px}
-.about-text{font-size:13px;color:var(--sub);line-height:1.85;margin-bottom:14px}
-.about-badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+/* ── ABOUT ── */
+.about-2col{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.about-title{font-size:24px;font-weight:900;line-height:1.4;margin-bottom:12px}
+.about-text{font-size:13px;color:var(--sub);line-height:1.85;margin-bottom:16px}
+.about-badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
 .about-badge{font-size:10px;font-weight:600;padding:4px 12px;border-radius:16px;background:var(--accent-lt);color:var(--accent)}
 .about-features{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .about-feat{background:var(--gray-bg);border:1px solid var(--gray-line);border-radius:6px;padding:10px 12px}
 .about-feat h5{font-size:12px;font-weight:700;margin-bottom:2px}
 .about-feat p{font-size:10px;color:var(--sub);line-height:1.5}
-.about-img{width:100%;border-radius:10px;object-fit:cover;height:100%}
+.about-img{width:100%;border-radius:10px;object-fit:cover}
 
-/* ba */
-.ba-grid{display:grid;grid-template-columns:1fr 32px 1fr;gap:0;margin-top:12px;align-items:stretch}
-.ba-box{border-radius:8px;padding:20px 18px}
+/* ── BA ── */
+.ba-grid{display:grid;grid-template-columns:1fr 36px 1fr;gap:0;align-items:stretch}
+.ba-box{border-radius:10px;padding:22px 20px}
 .ba-before{background:var(--red-lt);border:1px solid #fecaca}
 .ba-after{background:var(--accent-lt);border:1px solid #bfdbfe}
-.ba-arrow{display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--muted)}
+.ba-arrow{display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--muted)}
 .ba-tag{font-size:9px;font-weight:700;letter-spacing:.12em;margin-bottom:8px}
 .ba-tag-r{color:var(--red)}.ba-tag-b{color:var(--accent)}
-.ba-title{font-size:14px;font-weight:700;margin-bottom:8px}
-.ba-list{list-style:none;display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--sub)}
-.ba-list li{display:flex;align-items:flex-start;gap:5px;line-height:1.45}
+.ba-title{font-size:14px;font-weight:700;margin-bottom:10px}
+.ba-list{list-style:none;display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--sub)}
+.ba-list li{display:flex;align-items:flex-start;gap:6px;line-height:1.45}
 .ba-x{color:var(--red);font-weight:700;flex-shrink:0}
 .ba-o{color:var(--accent);font-weight:700;flex-shrink:0}
-.ba-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
-.ba-stat{background:var(--accent-lt);border-radius:6px;padding:12px;text-align:center}
-.ba-stat .n{font-size:22px;font-weight:900;color:var(--accent);font-family:'DM Sans',sans-serif;line-height:1.1}
+.ba-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.ba-stat{background:var(--accent-lt);border-radius:8px;padding:14px;text-align:center}
+.ba-stat .n{font-size:24px;font-weight:900;color:var(--accent);font-family:'DM Sans',sans-serif;line-height:1.1}
 .ba-stat .l{font-size:10px;color:var(--sub);margin-top:2px}
 
-/* phase overview */
-.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
-.phase-card{border:1px solid var(--gray-line);border-radius:8px;padding:20px 18px;background:var(--white)}
+/* ── PHASE ── */
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.phase-card{border:1px solid var(--gray-line);border-radius:10px;padding:22px 20px;background:var(--white)}
 .phase-tag{font-size:9px;font-weight:700;color:var(--accent);letter-spacing:.12em;font-family:'DM Sans',sans-serif;margin-bottom:6px;display:block}
-.phase-num{font-family:'Noto Serif JP',serif;font-size:36px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:4px}
-.phase-name{font-size:16px;font-weight:700;margin-bottom:4px}
-.phase-desc{font-size:11px;color:var(--sub);line-height:1.6;margin-bottom:8px}
+.phase-num{font-family:'Noto Serif JP',serif;font-size:38px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:4px}
+.phase-name{font-size:16px;font-weight:700;margin-bottom:5px}
+.phase-desc{font-size:11px;color:var(--sub);line-height:1.6;margin-bottom:10px}
 .phase-items{list-style:none;display:flex;flex-direction:column;gap:3px}
 .phase-items li{font-size:10px;color:var(--sub);display:flex;align-items:flex-start;gap:5px;line-height:1.4}
 .phase-items li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0;font-size:9px}
-.phase-bottom{background:var(--navy);border-radius:8px;padding:14px 24px;margin-top:12px;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;text-align:center}
-.phase-bottom strong{font-size:16px;font-weight:900;color:var(--white);font-family:'DM Sans',sans-serif;display:block}
+.phase-bottom{background:var(--navy);border-radius:10px;padding:16px 28px;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;text-align:center}
+.phase-bottom strong{font-size:17px;font-weight:900;color:var(--white);font-family:'DM Sans',sans-serif;display:block}
 .phase-bottom span{font-size:9px;color:rgba(255,255,255,.4)}
 
-/* phase detail */
-.pd-2col{display:grid;grid-template-columns:1.15fr .85fr;gap:32px;margin-top:14px;align-items:start}
+/* ── PHASE DETAIL ── */
+.pd-2col{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:start}
 .pd-tag{font-size:9px;font-weight:700;color:var(--accent);letter-spacing:.12em;font-family:'DM Sans',sans-serif;margin-bottom:6px}
-.pd-title{font-size:22px;font-weight:900;line-height:1.35;margin-bottom:8px}
-.pd-text{font-size:12px;color:var(--sub);line-height:1.75;margin-bottom:10px}
-.pd-checks{list-style:none;display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+.pd-title{font-size:22px;font-weight:900;line-height:1.35;margin-bottom:10px}
+.pd-text{font-size:12px;color:var(--sub);line-height:1.75;margin-bottom:12px}
+.pd-checks{list-style:none;display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
 .pd-checks li{font-size:12px;color:var(--sub);display:flex;align-items:flex-start;gap:6px;line-height:1.5}
 .pd-checks li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0}
 .pd-note{background:var(--gray-bg);border:1px solid var(--gray-line);border-radius:6px;padding:10px 14px;font-size:11px;color:var(--sub);line-height:1.6}
 .pd-note strong{color:var(--text)}
 .pd-right{display:flex;flex-direction:column;gap:10px}
-.pd-img{width:100%;border-radius:8px;object-fit:cover;height:200px}
+.pd-img{width:100%;border-radius:10px;object-fit:cover;height:200px}
 .pd-side-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .pd-side-card{background:var(--gray-bg);border:1px solid var(--gray-line);border-radius:6px;padding:12px;text-align:center}
 .pd-side-card .n{font-size:20px;font-weight:900;color:var(--accent);font-family:'DM Sans',sans-serif}
 .pd-side-card .l{font-size:10px;color:var(--sub);margin-top:2px}
 
-/* comparison */
-.cmp-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;font-size:12px}
+/* ── COMPARISON ── */
+.cmp-table{width:100%;border-collapse:separate;border-spacing:0;font-size:12px}
 .cmp-table th{padding:10px 10px;font-weight:600;text-align:center}
 .cmp-table th:first-child{text-align:left;color:var(--muted);font-size:11px}
 .cmp-table .th-other{background:var(--gray-bg);color:var(--sub);border:1px solid var(--gray-line);border-bottom:none}
@@ -144,60 +156,60 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;color:var(--text);backgroun
 .cmp-table .td-other{background:var(--gray-bg);color:var(--sub);border-left:1px solid var(--gray-line);border-right:1px solid var(--gray-line)}
 .cmp-table .td-ours{background:rgba(36,113,212,.08);color:var(--accent);font-weight:700;border-left:1px solid rgba(36,113,212,.2);border-right:1px solid rgba(36,113,212,.2)}
 .cmp-table tbody tr:last-child .td-ours{border-radius:0 0 6px 6px}
-.cmp-note{margin-top:10px;background:var(--accent-lt);border-radius:6px;padding:12px 18px;font-size:12px;color:var(--accent);font-weight:600;text-align:center}
+.cmp-note{background:var(--accent-lt);border-radius:8px;padding:14px 20px;font-size:13px;color:var(--accent);font-weight:600;text-align:center}
 
-/* pricing */
-.price-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
-.pr-card{border:1px solid var(--gray-line);border-radius:8px;padding:20px 16px;position:relative}
+/* ── PRICING ── */
+.price-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pr-card{border:1px solid var(--gray-line);border-radius:10px;padding:22px 18px;position:relative}
 .pr-card.feat{border-color:var(--accent);border-width:2px}
-.pr-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--white);font-size:9px;font-weight:700;padding:2px 12px;border-radius:20px;white-space:nowrap}
-.pr-name{font-size:10px;font-weight:700;color:var(--accent);letter-spacing:.08em;margin-bottom:6px}
-.pr-price{font-family:'Noto Serif JP',serif;font-size:26px;font-weight:700;color:var(--text);line-height:1;margin-bottom:2px}
+.pr-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--white);font-size:9px;font-weight:700;padding:3px 14px;border-radius:20px;white-space:nowrap}
+.pr-name{font-size:10px;font-weight:700;color:var(--accent);letter-spacing:.08em;margin-bottom:8px}
+.pr-price{font-family:'Noto Serif JP',serif;font-size:28px;font-weight:700;color:var(--text);line-height:1;margin-bottom:3px}
 .pr-price span{font-size:13px;font-weight:400;color:var(--muted)}
-.pr-note{font-size:10px;color:var(--muted);margin-bottom:10px;line-height:1.5}
-.pr-list{list-style:none;display:flex;flex-direction:column;gap:3px}
+.pr-note{font-size:10px;color:var(--muted);margin-bottom:12px;line-height:1.5}
+.pr-list{list-style:none;display:flex;flex-direction:column;gap:4px}
 .pr-list li{font-size:11px;color:var(--sub);display:flex;align-items:flex-start;gap:5px;line-height:1.45}
 .pr-list li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0;font-size:10px}
-.pr-target{font-size:10px;color:var(--muted);margin-top:8px;padding-top:8px;border-top:1px dashed var(--gray-line);line-height:1.5}
+.pr-target{font-size:10px;color:var(--muted);margin-top:10px;padding-top:10px;border-top:1px dashed var(--gray-line);line-height:1.5}
 
-/* cost sim */
-.sim-table{width:100%;border-collapse:collapse;margin-top:12px}
-.sim-table th{background:var(--navy);color:var(--white);padding:8px 12px;font-size:11px;font-weight:600;text-align:center}
+/* ── COST SIM ── */
+.sim-table{width:100%;border-collapse:collapse}
+.sim-table th{background:var(--navy);color:var(--white);padding:10px 14px;font-size:11px;font-weight:600;text-align:center}
 .sim-table th:first-child{text-align:left}
-.sim-table td{padding:8px 12px;font-size:12px;text-align:center;border-bottom:1px solid var(--gray-line)}
+.sim-table td{padding:10px 14px;font-size:12px;text-align:center;border-bottom:1px solid var(--gray-line)}
 .sim-table td:first-child{text-align:left;font-weight:500}
 .sim-table .highlight{background:var(--accent-lt);font-weight:700;color:var(--accent)}
 .sim-table .total{background:var(--accent);color:var(--white);font-weight:900;font-size:13px}
 
-/* faq */
-.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;margin-top:12px}
-.faq-item{border:1px solid var(--gray-line);border-radius:6px;padding:12px 14px}
+/* ── FAQ ── */
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 20px}
+.faq-item{border:1px solid var(--gray-line);border-radius:8px;padding:14px 16px}
 .faq-q{font-size:12px;font-weight:700;color:var(--text);margin-bottom:4px;line-height:1.35}
 .faq-a{font-size:10px;color:var(--sub);line-height:1.6}
 
-/* security */
-.sec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
-.sec-card{background:var(--gray-bg);border:1px solid var(--gray-line);border-radius:8px;padding:16px;text-align:center}
-.sec-icon{font-size:22px;margin-bottom:6px;display:block}
+/* ── SECURITY ── */
+.sec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.sec-card{background:var(--gray-bg);border:1px solid var(--gray-line);border-radius:10px;padding:18px;text-align:center}
+.sec-icon{font-size:24px;margin-bottom:6px;display:block}
 .sec-card h4{font-size:12px;font-weight:700;margin-bottom:4px}
 .sec-card p{font-size:10px;color:var(--sub);line-height:1.55}
 
-/* flow */
-.flow-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
-.flow-card{text-align:center;position:relative;background:var(--gray-bg);border:1px solid var(--gray-line);border-radius:8px;padding:16px 12px}
-.flow-num{width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;margin:0 auto 8px}
+/* ── FLOW ── */
+.flow-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.flow-card{text-align:center;background:var(--gray-bg);border:1px solid var(--gray-line);border-radius:10px;padding:18px 14px}
+.flow-num{width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:'DM Sans',sans-serif;margin:0 auto 10px}
 .flow-card h4{font-size:13px;font-weight:700;margin-bottom:4px}
 .flow-card p{font-size:10px;color:var(--sub);line-height:1.5}
 
-/* why */
-.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
-.why-card{background:var(--gray-bg);border:1px solid var(--gray-line);border-radius:8px;padding:18px 16px}
-.why-num{font-family:'DM Sans',sans-serif;font-size:28px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:4px}
+/* ── WHY ── */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.why-card{background:var(--gray-bg);border:1px solid var(--gray-line);border-radius:10px;padding:22px 18px}
+.why-num{font-family:'DM Sans',sans-serif;font-size:30px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:6px}
 .why-card h4{font-size:14px;font-weight:700;margin-bottom:6px;line-height:1.35}
 .why-card p{font-size:11px;color:var(--sub);line-height:1.6}
 
-/* deliverables */
-.del-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+/* ── DELIVERABLES ── */
+.del-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 .del-card{border:1px solid var(--gray-line);border-radius:8px;padding:14px 16px;display:flex;gap:10px;align-items:flex-start}
 .del-icon{width:32px;height:32px;border-radius:8px;background:var(--accent-lt);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
 .del-card h4{font-size:13px;font-weight:700;margin-bottom:2px}
@@ -214,7 +226,7 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;color:var(--text);backgroun
 <!-- ===== SLIDE 1: COVER ===== -->
 <div class="slide slide-dark" style="padding:0">
   <div class="cover-bg"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80" alt=""></div>
-  <div class="cover-content" style="padding:44px 64px">
+  <div class="cover-inner" style="padding:56px 80px">
     <div class="cover-logo">きづけば<em>AI</em>経理</div>
     <div class="cover-tag">SERVICE GUIDE — 経理BPO × AI導入</div>
     <div class="cover-title">気がつけば、<br>AI導入まで終わっていた。</div>
@@ -225,58 +237,52 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;color:var(--text);backgroun
       <div class="cover-stat"><strong>60%</strong><span>コスト削減率</span></div>
       <div class="cover-stat"><strong>0円</strong><span>初期費用・違約金</span></div>
     </div>
-    <div style="position:absolute;bottom:18px;left:64px;font-size:9px;color:rgba(255,255,255,.2)">CONFIDENTIAL — 本資料の無断転載・配布を禁じます</div>
-    <div style="position:absolute;bottom:18px;right:64px;font-size:9px;color:rgba(255,255,255,.2)">株式会社BEWIBE</div>
   </div>
+  <div style="position:absolute;bottom:20px;left:80px;font-size:9px;color:rgba(255,255,255,.2)">CONFIDENTIAL — 本資料の無断転載・配布を禁じます</div>
+  <div style="position:absolute;bottom:20px;right:80px;font-size:9px;color:rgba(255,255,255,.2)">株式会社BEWIBE</div>
 </div>
 
 <!-- ===== SLIDE 2: TOC ===== -->
 <div class="slide">
-  <span class="tag">CONTENTS</span>
-  <div class="stitle">目次</div>
-  <p class="ssub">本資料では、きづけばAI経理のサービス概要・料金・導入プロセスを詳しくご説明します。</p>
-  <div class="toc-grid">
-    <div class="toc-item"><div class="toc-num">1</div><div class="toc-label">市場背景 — 中小企業の経理課題</div><div class="toc-page">03</div></div>
-    <div class="toc-item"><div class="toc-num">7</div><div class="toc-label">Phase 02 — AI構築の詳細</div><div class="toc-page">09</div></div>
-    <div class="toc-item"><div class="toc-num">2</div><div class="toc-label">5つの課題</div><div class="toc-page">04</div></div>
-    <div class="toc-item"><div class="toc-num">8</div><div class="toc-label">Phase 03 — 納品と選択肢</div><div class="toc-page">10</div></div>
-    <div class="toc-item"><div class="toc-num">3</div><div class="toc-label">きづけばAI経理とは</div><div class="toc-page">05</div></div>
-    <div class="toc-item"><div class="toc-num">9</div><div class="toc-label">他サービスとの比較</div><div class="toc-page">11</div></div>
-    <div class="toc-item"><div class="toc-num">4</div><div class="toc-label">導入前 vs 導入後</div><div class="toc-page">06</div></div>
-    <div class="toc-item"><div class="toc-num">10</div><div class="toc-label">料金プラン</div><div class="toc-page">12</div></div>
-    <div class="toc-item"><div class="toc-num">5</div><div class="toc-label">3つのフェーズ — 全体像</div><div class="toc-page">07</div></div>
-    <div class="toc-item"><div class="toc-num">11</div><div class="toc-label">コストシミュレーション</div><div class="toc-page">13</div></div>
-    <div class="toc-item"><div class="toc-num">6</div><div class="toc-label">Phase 01 — 経理BPOの詳細</div><div class="toc-page">08</div></div>
-    <div class="toc-item"><div class="toc-num">12</div><div class="toc-label">導入の流れ・FAQ・セキュリティ</div><div class="toc-page">14-17</div></div>
-  </div>
-  <div style="background:var(--navy);border-radius:8px;padding:14px 20px;margin-top:20px;display:flex;justify-content:center;gap:40px;align-items:center">
-    <div style="text-align:center"><div style="font-size:20px;font-weight:900;color:var(--white);font-family:'DM Sans',sans-serif">17</div><div style="font-size:9px;color:rgba(255,255,255,.4)">スライド</div></div>
-    <div style="text-align:center"><div style="font-size:20px;font-weight:900;color:var(--white);font-family:'DM Sans',sans-serif">3</div><div style="font-size:9px;color:rgba(255,255,255,.4)">フェーズ解説</div></div>
-    <div style="text-align:center"><div style="font-size:20px;font-weight:900;color:var(--white);font-family:'DM Sans',sans-serif">3</div><div style="font-size:9px;color:rgba(255,255,255,.4)">料金プラン</div></div>
-    <div style="text-align:center"><div style="font-size:20px;font-weight:900;color:var(--white);font-family:'DM Sans',sans-serif">8</div><div style="font-size:9px;color:rgba(255,255,255,.4)">FAQ</div></div>
+  <div class="s-head"><span class="tag">CONTENTS</span><div class="stitle">目次</div><p class="ssub">本資料では、きづけばAI経理のサービス概要・料金・導入プロセスを詳しくご説明します。</p></div>
+  <div class="s-body spread" style="padding:24px 0">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 48px">
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 0;border-bottom:1px solid var(--gray-line)"><div style="width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">1</div><div style="font-size:13px;font-weight:500;flex:1">市場背景 — 中小企業の経理課題</div><div style="font-size:11px;color:var(--muted)">03</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 0;border-bottom:1px solid var(--gray-line)"><div style="width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">7</div><div style="font-size:13px;font-weight:500;flex:1">Phase 02 — AI構築の詳細</div><div style="font-size:11px;color:var(--muted)">09</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 0;border-bottom:1px solid var(--gray-line)"><div style="width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">2</div><div style="font-size:13px;font-weight:500;flex:1">5つの課題</div><div style="font-size:11px;color:var(--muted)">04</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 0;border-bottom:1px solid var(--gray-line)"><div style="width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">8</div><div style="font-size:13px;font-weight:500;flex:1">Phase 03 — 納品と選択肢</div><div style="font-size:11px;color:var(--muted)">10</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 0;border-bottom:1px solid var(--gray-line)"><div style="width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">3</div><div style="font-size:13px;font-weight:500;flex:1">きづけばAI経理とは</div><div style="font-size:11px;color:var(--muted)">05</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 0;border-bottom:1px solid var(--gray-line)"><div style="width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">9</div><div style="font-size:13px;font-weight:500;flex:1">他サービスとの比較</div><div style="font-size:11px;color:var(--muted)">11</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 0;border-bottom:1px solid var(--gray-line)"><div style="width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">4</div><div style="font-size:13px;font-weight:500;flex:1">導入前 vs 導入後</div><div style="font-size:11px;color:var(--muted)">06</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 0;border-bottom:1px solid var(--gray-line)"><div style="width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">10</div><div style="font-size:13px;font-weight:500;flex:1">料金プラン</div><div style="font-size:11px;color:var(--muted)">12</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 0;border-bottom:1px solid var(--gray-line)"><div style="width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">5</div><div style="font-size:13px;font-weight:500;flex:1">3つのフェーズ — 全体像</div><div style="font-size:11px;color:var(--muted)">07</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 0;border-bottom:1px solid var(--gray-line)"><div style="width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">11</div><div style="font-size:13px;font-weight:500;flex:1">コストシミュレーション</div><div style="font-size:11px;color:var(--muted)">13</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 0;border-bottom:1px solid var(--gray-line)"><div style="width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">6</div><div style="font-size:13px;font-weight:500;flex:1">Phase 01 — 経理BPOの詳細</div><div style="font-size:11px;color:var(--muted)">08</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 0;border-bottom:1px solid var(--gray-line)"><div style="width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">12</div><div style="font-size:13px;font-weight:500;flex:1">導入の流れ・FAQ・セキュリティ</div><div style="font-size:11px;color:var(--muted)">14-17</div></div>
+    </div>
   </div>
   <div class="sf"><span class="logo-sm">きづけば<em>AI</em>経理</span><span class="pg">02</span></div>
 </div>
 
 <!-- ===== SLIDE 3: MARKET ===== -->
 <div class="slide">
-  <span class="tag">MARKET</span>
-  <div class="stitle">中小企業の経理を取り巻く現状</div>
-  <p class="ssub">人手不足・コスト増・制度変更 — 中小企業の経理部門はかつてないプレッシャーにさらされています。</p>
-  <div class="market-grid">
-    <div class="market-card"><div class="n">78<em>%</em></div><div class="l">中小企業の経営者が<br>経理を兼任</div><div class="src">日本商工会議所 2024年調査</div></div>
-    <div class="market-card"><div class="n">480<em>万円</em></div><div class="l">経理正社員1名の<br>年間人件費（東京）</div><div class="src">求人ボックス 2024年</div></div>
-    <div class="market-card"><div class="n">35<em>%</em></div><div class="l">中小企業で経理担当者が<br>1名以下</div><div class="src">中小企業庁 実態調査</div></div>
-    <div class="market-card"><div class="n">2.4<em>倍</em></div><div class="l">電帳法・インボイスで<br>増えた経理工数</div><div class="src">freee 2024年レポート</div></div>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px">
-    <div style="background:var(--red-lt);border:1px solid #fecaca;border-radius:8px;padding:16px 20px">
-      <div style="font-size:13px;font-weight:700;color:var(--red);margin-bottom:6px">深刻化する「経理の2025年問題」</div>
-      <div style="font-size:11px;color:var(--sub);line-height:1.7">インボイス制度の本格運用開始、電帳法の完全義務化により、中小企業の経理負担は急増。にもかかわらず、経理人材の採用は年々困難になり、求人倍率は3倍超え。「人が採れない・育てられない・辞められない」状況が深刻化しています。</div>
+  <div class="s-head"><span class="tag">MARKET</span><div class="stitle">中小企業の経理を取り巻く現状</div><p class="ssub">人手不足・コスト増・制度変更 — 中小企業の経理部門はかつてないプレッシャーにさらされています。</p></div>
+  <div class="s-body spread" style="padding:20px 0 0;gap:16px">
+    <div class="market-grid">
+      <div class="market-card"><div class="n">78<em>%</em></div><div class="l">中小企業の経営者が<br>経理を兼任</div><div class="src">日本商工会議所 2024年調査</div></div>
+      <div class="market-card"><div class="n">480<em>万円</em></div><div class="l">経理正社員1名の<br>年間人件費（東京）</div><div class="src">求人ボックス 2024年</div></div>
+      <div class="market-card"><div class="n">35<em>%</em></div><div class="l">中小企業で経理担当者が<br>1名以下</div><div class="src">中小企業庁 実態調査</div></div>
+      <div class="market-card"><div class="n">2.4<em>倍</em></div><div class="l">電帳法・インボイスで<br>増えた経理工数</div><div class="src">freee 2024年レポート</div></div>
     </div>
-    <div style="background:var(--accent-lt);border:1px solid #bfdbfe;border-radius:8px;padding:16px 20px">
-      <div style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:6px">AI×BPOが最適解である理由</div>
-      <div style="font-size:11px;color:var(--sub);line-height:1.7">AI単体では「導入する余裕がない」、BPO単体では「いつまでもコストが下がらない」。きづけばAI経理は、BPOで即座に経理負担をゼロにしながら、同時にAI化を完了。3ヶ月後にはコスト半減を実現する、中小企業唯一の選択肢です。</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div style="background:var(--red-lt);border:1px solid #fecaca;border-radius:10px;padding:20px 24px">
+        <div style="font-size:14px;font-weight:700;color:var(--red);margin-bottom:8px">深刻化する「経理の2025年問題」</div>
+        <div style="font-size:12px;color:var(--sub);line-height:1.75">インボイス制度の本格運用開始、電帳法の完全義務化により、中小企業の経理負担は急増。にもかかわらず、経理人材の採用は年々困難になり、求人倍率は3倍超え。「人が採れない・育てられない・辞められない」状況が深刻化しています。</div>
+      </div>
+      <div style="background:var(--accent-lt);border:1px solid #bfdbfe;border-radius:10px;padding:20px 24px">
+        <div style="font-size:14px;font-weight:700;color:var(--accent);margin-bottom:8px">AI×BPOが最適解である理由</div>
+        <div style="font-size:12px;color:var(--sub);line-height:1.75">AI単体では「導入する余裕がない」、BPO単体では「いつまでもコストが下がらない」。きづけばAI経理は、BPOで即座に経理負担をゼロにしながら、同時にAI化を完了。3ヶ月後にはコスト半減を実現する、中小企業唯一の選択肢です。</div>
+      </div>
     </div>
   </div>
   <div class="sf"><span class="logo-sm">きづけば<em>AI</em>経理</span><span class="pg">03</span></div>
@@ -284,54 +290,50 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;color:var(--text);backgroun
 
 <!-- ===== SLIDE 4: PROBLEMS ===== -->
 <div class="slide">
-  <span class="tag">PROBLEM</span>
-  <div class="stitle">こんな状況、ありませんか？</div>
-  <p class="ssub">一つでも当てはまれば、きづけばAI経理で解決できます。</p>
-  <div class="prob-2col">
-    <div class="prob-card"><div class="prob-num">1</div><div><h4>社長・役員が月末に経理をやっている</h4><p>本業に集中したいのに、伝票整理と仕訳入力で毎月10〜20時間が消える。年間で240時間 = 約30営業日分のロス。経営者の時間単価で考えると月20万円以上の機会損失。</p></div></div>
-    <div class="prob-card"><div class="prob-num">2</div><div><h4>担当者1人で属人化。退職リスクが怖い</h4><p>ノウハウが個人に蓄積され、辞めると経理が止まる。引き継ぎに3〜6ヶ月かかるケースも。採用コスト・教育コストを含めると1人退職で100万円超の損失。</p></div></div>
-    <div class="prob-card"><div class="prob-num">3</div><div><h4>BPOに出しても、毎月コストが続くだけ</h4><p>業務を外注し続けるだけで、社内に何も残らない。月10万円×12ヶ月=120万円/年が永続的に流出。値下げ交渉も限界があり、コスト削減の出口がない。</p></div></div>
-    <div class="prob-card"><div class="prob-num">4</div><div><h4>AIツールを自分で導入する余裕がない</h4><p>調査・選定・導入・運用まで手が回らない。AI導入コンサルは初期費用300〜500万円が相場。PoC（実証実験）だけで半年かかるケースも珍しくない。</p></div></div>
-  </div>
-  <div style="margin-top:10px"><div class="prob-card" style="width:100%"><div class="prob-num">5</div><div><h4>税理士はいるが、日常の経理は丸投げできない</h4><p>顧問税理士の守備範囲は決算・税務申告。日々の記帳・請求書処理・振込管理は結局自社でやっている。「税理士がいるから大丈夫」は実は大丈夫ではない。</p></div></div></div>
-  <div class="prob-bottom">
-    <div><div class="n">78%</div><div class="l">経営者が経理兼任</div></div>
-    <div><div class="n">240h</div><div class="l">年間の経理工数（社長）</div></div>
-    <div><div class="n">480万</div><div class="l">経理1名の年間人件費</div></div>
+  <div class="s-head"><span class="tag">PROBLEM</span><div class="stitle">こんな状況、ありませんか？</div><p class="ssub">一つでも当てはまれば、きづけばAI経理で解決できます。</p></div>
+  <div class="s-body spread" style="padding:16px 0 0;gap:12px">
+    <div class="prob-2col">
+      <div class="prob-card"><div class="prob-num">1</div><div><h4>社長・役員が月末に経理をやっている</h4><p>本業に集中したいのに、伝票整理と仕訳入力で毎月10〜20時間が消える。年間で240時間 = 約30営業日分のロス。</p></div></div>
+      <div class="prob-card"><div class="prob-num">2</div><div><h4>担当者1人で属人化。退職リスクが怖い</h4><p>ノウハウが個人に蓄積され、辞めると経理が止まる。引き継ぎに3〜6ヶ月、退職コスト100万円超。</p></div></div>
+      <div class="prob-card"><div class="prob-num">3</div><div><h4>BPOに出しても、毎月コストが続くだけ</h4><p>業務を外注し続けるだけで、社内に何も残らない。月10万×12ヶ月=120万/年が永続的に流出。</p></div></div>
+      <div class="prob-card"><div class="prob-num">4</div><div><h4>AIツールを自分で導入する余裕がない</h4><p>AI導入コンサルは初期費用300〜500万が相場。PoCだけで半年かかるケースも珍しくない。</p></div></div>
+    </div>
+    <div class="prob-card" style="width:100%"><div class="prob-num">5</div><div><h4>税理士はいるが、日常の経理は丸投げできない</h4><p>顧問税理士の守備範囲は決算・税務申告。日々の記帳・請求書処理・振込管理は結局自社でやっている。</p></div></div>
+    <div class="prob-bottom">
+      <div><div class="n">78%</div><div class="l">経営者が経理兼任</div></div>
+      <div><div class="n">240h</div><div class="l">年間の経理工数</div></div>
+      <div><div class="n">480万</div><div class="l">経理1名の年間人件費</div></div>
+    </div>
   </div>
   <div class="sf"><span class="logo-sm">きづけば<em>AI</em>経理</span><span class="pg">04</span></div>
 </div>
 
 <!-- ===== SLIDE 5: ABOUT ===== -->
 <div class="slide">
-  <span class="tag">ABOUT</span>
-  <div class="stitle">きづけばAI経理とは</div>
-  <div class="about-2col">
-    <div>
-      <div class="about-title">経理を丸投げしたら、<br>3ヶ月後にはAI化が完了。</div>
-      <div class="about-text">「きづけばAI経理」は、中小企業向けの経理BPO＋AI導入サービスです。ただのBPOでは終わりません。経理を丸投げしている3ヶ月の間に、裏側で御社専用のAIワークフローを構築。完成したら御社の資産として納品します。<br>「気がつけば、AI導入まで終わっていた。」——それが、きづけばAI経理です。</div>
-      <div class="about-badges">
-        <span class="about-badge">✓ 初期費用なし</span>
-        <span class="about-badge">✓ 3ヶ月でAI化</span>
-        <span class="about-badge">✓ 違約金なし</span>
-        <span class="about-badge">✓ NDA締結</span>
-        <span class="about-badge">✓ 税理士併用OK</span>
-        <span class="about-badge">✓ freee/MF/弥生対応</span>
+  <div class="s-head"><span class="tag">ABOUT</span><div class="stitle">きづけばAI経理とは</div></div>
+  <div class="s-body" style="padding:16px 0 0">
+    <div class="about-2col">
+      <div>
+        <div class="about-title">経理を丸投げしたら、<br>3ヶ月後にはAI化が完了。</div>
+        <div class="about-text">「きづけばAI経理」は、中小企業向けの経理BPO＋AI導入サービスです。ただのBPOでは終わりません。経理を丸投げしている3ヶ月の間に、裏側で御社専用のAIワークフローを構築。完成したら御社の資産として納品します。</div>
+        <div class="about-badges">
+          <span class="about-badge">✓ 初期費用なし</span><span class="about-badge">✓ 3ヶ月でAI化</span><span class="about-badge">✓ 違約金なし</span><span class="about-badge">✓ NDA締結</span><span class="about-badge">✓ 税理士併用OK</span><span class="about-badge">✓ freee/MF/弥生対応</span>
+        </div>
+        <div class="about-features">
+          <div class="about-feat"><h5>BPO中にAI導入が完了</h5><p>経理を外注している間に裏側でAI構築。お客様の追加作業ゼロ。</p></div>
+          <div class="about-feat"><h5>時間が経つほどコスト減</h5><p>通常BPOは毎月同額。当サービスは3ヶ月後に約半額に。</p></div>
+          <div class="about-feat"><h5>ワークフローが資産に</h5><p>構築したAIワークフローは御社に納品。買い取って自社資産に。</p></div>
+          <div class="about-feat"><h5>既存環境そのまま</h5><p>会計ソフト・顧問税理士・既存フローを変えずに導入可能。</p></div>
+        </div>
       </div>
-      <div class="about-features">
-        <div class="about-feat"><h5>BPO中にAI導入が完了</h5><p>経理を外注している間に裏側でAI構築。お客様の追加作業ゼロ。</p></div>
-        <div class="about-feat"><h5>時間が経つほどコスト減</h5><p>通常BPOは毎月同額。当サービスは3ヶ月後に約半額に。</p></div>
-        <div class="about-feat"><h5>ワークフローが資産に</h5><p>構築したAIワークフローは御社に納品。買い取って自社資産に。</p></div>
-        <div class="about-feat"><h5>既存環境そのまま</h5><p>会計ソフト・顧問税理士・既存フローを変えずに導入可能。</p></div>
-      </div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:10px">
-      <img class="about-img" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=500&q=80" alt="" style="height:220px">
-      <div style="background:var(--navy);border-radius:8px;padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
-        <div style="text-align:center"><div style="font-size:22px;font-weight:900;color:var(--white);font-family:'DM Sans',sans-serif">¥98,000〜</div><div style="font-size:9px;color:rgba(255,255,255,.4)">月額BPO費用</div></div>
-        <div style="text-align:center"><div style="font-size:22px;font-weight:900;color:var(--white);font-family:'DM Sans',sans-serif">3ヶ月</div><div style="font-size:9px;color:rgba(255,255,255,.4)">AI化完了まで</div></div>
-        <div style="text-align:center"><div style="font-size:22px;font-weight:900;color:var(--white);font-family:'DM Sans',sans-serif">60%</div><div style="font-size:9px;color:rgba(255,255,255,.4)">平均コスト削減率</div></div>
-        <div style="text-align:center"><div style="font-size:22px;font-weight:900;color:var(--white);font-family:'DM Sans',sans-serif">0円</div><div style="font-size:9px;color:rgba(255,255,255,.4)">初期費用・違約金</div></div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <img class="about-img" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=500&q=80" alt="" style="height:210px">
+        <div style="background:var(--navy);border-radius:10px;padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div style="text-align:center"><div style="font-size:24px;font-weight:900;color:var(--white);font-family:'DM Sans',sans-serif">¥98,000〜</div><div style="font-size:9px;color:rgba(255,255,255,.4)">月額BPO費用</div></div>
+          <div style="text-align:center"><div style="font-size:24px;font-weight:900;color:var(--white);font-family:'DM Sans',sans-serif">3ヶ月</div><div style="font-size:9px;color:rgba(255,255,255,.4)">AI化完了まで</div></div>
+          <div style="text-align:center"><div style="font-size:24px;font-weight:900;color:var(--white);font-family:'DM Sans',sans-serif">60%</div><div style="font-size:9px;color:rgba(255,255,255,.4)">平均コスト削減率</div></div>
+          <div style="text-align:center"><div style="font-size:24px;font-weight:900;color:var(--white);font-family:'DM Sans',sans-serif">0円</div><div style="font-size:9px;color:rgba(255,255,255,.4)">初期費用・違約金</div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -340,222 +342,96 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;color:var(--text);backgroun
 
 <!-- ===== SLIDE 6: BEFORE/AFTER ===== -->
 <div class="slide">
-  <span class="tag">BEFORE / AFTER</span>
-  <div class="stitle">導入前と導入後の変化</div>
-  <div class="ba-grid">
-    <div class="ba-box ba-before">
-      <div class="ba-tag ba-tag-r">BEFORE — 従来の経理体制</div>
-      <div class="ba-title">こんな状態が続いていませんか？</div>
-      <ul class="ba-list">
-        <li><span class="ba-x">✗</span>社長が月末に10〜20時間の経理作業</li>
-        <li><span class="ba-x">✗</span>担当者1人に属人化 → 退職=経理停止</li>
-        <li><span class="ba-x">✗</span>BPO月額10万円が永続的に流出</li>
-        <li><span class="ba-x">✗</span>AI導入を検討する時間も予算もない</li>
-        <li><span class="ba-x">✗</span>社内にノウハウが蓄積されない</li>
-        <li><span class="ba-x">✗</span>税理士は決算のみ、日常経理は自社対応</li>
-        <li><span class="ba-x">✗</span>インボイス・電帳法の対応が追いつかない</li>
-      </ul>
+  <div class="s-head"><span class="tag">BEFORE / AFTER</span><div class="stitle">導入前と導入後の変化</div></div>
+  <div class="s-body spread" style="padding:16px 0 0;gap:14px">
+    <div class="ba-grid">
+      <div class="ba-box ba-before">
+        <div class="ba-tag ba-tag-r">BEFORE — 従来の経理体制</div>
+        <div class="ba-title">こんな状態が続いていませんか？</div>
+        <ul class="ba-list">
+          <li><span class="ba-x">✗</span>社長が月末に10〜20時間の経理作業</li>
+          <li><span class="ba-x">✗</span>担当者1人に属人化 → 退職=経理停止</li>
+          <li><span class="ba-x">✗</span>BPO月額10万円が永続的に流出</li>
+          <li><span class="ba-x">✗</span>AI導入を検討する時間も予算もない</li>
+          <li><span class="ba-x">✗</span>社内にノウハウが蓄積されない</li>
+          <li><span class="ba-x">✗</span>インボイス・電帳法の対応が追いつかない</li>
+        </ul>
+      </div>
+      <div class="ba-arrow">→</div>
+      <div class="ba-box ba-after">
+        <div class="ba-tag ba-tag-b">AFTER — きづけばAI経理を導入</div>
+        <div class="ba-title">3ヶ月後、こう変わります</div>
+        <ul class="ba-list">
+          <li><span class="ba-o">✓</span>経理は完全に丸投げ → 本業に集中</li>
+          <li><span class="ba-o">✓</span>AIワークフローに蓄積 → 属人化ゼロ</li>
+          <li><span class="ba-o">✓</span>3ヶ月後にBPOコストが約半額に</li>
+          <li><span class="ba-o">✓</span>BPO中にAI導入が自動完了</li>
+          <li><span class="ba-o">✓</span>ワークフロー・マニュアルが会社の資産に</li>
+          <li><span class="ba-o">✓</span>制度変更はワークフローが自動吸収</li>
+        </ul>
+      </div>
     </div>
-    <div class="ba-arrow">→</div>
-    <div class="ba-box ba-after">
-      <div class="ba-tag ba-tag-b">AFTER — きづけばAI経理を導入</div>
-      <div class="ba-title">3ヶ月後、こう変わります</div>
-      <ul class="ba-list">
-        <li><span class="ba-o">✓</span>経理は完全に丸投げ → 本業に集中</li>
-        <li><span class="ba-o">✓</span>AIワークフローに蓄積 → 属人化ゼロ</li>
-        <li><span class="ba-o">✓</span>3ヶ月後にBPOコストが約半額に</li>
-        <li><span class="ba-o">✓</span>BPO中にAI導入が自動完了（追加作業なし）</li>
-        <li><span class="ba-o">✓</span>ワークフロー・マニュアルが会社の資産に</li>
-        <li><span class="ba-o">✓</span>税理士との分業体制が自動で確立</li>
-        <li><span class="ba-o">✓</span>制度変更はワークフローが自動吸収</li>
-      </ul>
+    <div class="ba-stats">
+      <div class="ba-stat"><div class="n">60%</div><div class="l">コスト削減率</div></div>
+      <div class="ba-stat"><div class="n">3ヶ月</div><div class="l">AI導入完了まで</div></div>
+      <div class="ba-stat"><div class="n">0円</div><div class="l">初期費用</div></div>
+      <div class="ba-stat"><div class="n">0円</div><div class="l">違約金</div></div>
     </div>
-  </div>
-  <div class="ba-stats">
-    <div class="ba-stat"><div class="n">60%</div><div class="l">コスト削減率</div></div>
-    <div class="ba-stat"><div class="n">3ヶ月</div><div class="l">AI導入完了まで</div></div>
-    <div class="ba-stat"><div class="n">0円</div><div class="l">初期費用</div></div>
-    <div class="ba-stat"><div class="n">0円</div><div class="l">違約金</div></div>
   </div>
   <div class="sf"><span class="logo-sm">きづけば<em>AI</em>経理</span><span class="pg">06</span></div>
 </div>
 
 <!-- ===== SLIDE 7: SERVICE OVERVIEW ===== -->
 <div class="slide">
-  <span class="tag">SERVICE</span>
-  <div class="stitle">3ヶ月で、丸投げからAI化へ</div>
-  <p class="ssub">ただのBPOでは終わりません。3つのフェーズで御社の経理をAIで自走させます。</p>
-  <div class="phase-row">
-    <div class="phase-card">
-      <span class="phase-tag">PHASE 01 — 月1〜3</span>
-      <div class="phase-num">01</div>
-      <div class="phase-name">経理BPO</div>
-      <div class="phase-desc">まずは経理業務をまるごと代行。書類を送るだけで、仕訳から月次レポートまで全処理。</div>
-      <ul class="phase-items">
-        <li>領収書・請求書の仕訳入力</li>
-        <li>銀行明細の自動照合・突合</li>
-        <li>請求書の作成・送付</li>
-        <li>振込データの作成</li>
-        <li>月次試算表・レポート作成</li>
-      </ul>
+  <div class="s-head"><span class="tag">SERVICE</span><div class="stitle">3ヶ月で、丸投げからAI化へ</div><p class="ssub">ただのBPOでは終わりません。3つのフェーズで御社の経理をAIで自走させます。</p></div>
+  <div class="s-body spread" style="padding:16px 0 0;gap:14px">
+    <div class="phase-row">
+      <div class="phase-card"><span class="phase-tag">PHASE 01 — 月1〜3</span><div class="phase-num">01</div><div class="phase-name">経理BPO</div><div class="phase-desc">まずは経理業務をまるごと代行。書類を送るだけ。</div><ul class="phase-items"><li>領収書・請求書の仕訳入力</li><li>銀行明細の自動照合・突合</li><li>請求書の作成・送付</li><li>振込データの作成</li><li>月次試算表・レポート作成</li></ul></div>
+      <div class="phase-card" style="border-color:var(--accent);border-width:2px"><span class="phase-tag">PHASE 02 — 月1〜3（同時進行）</span><div class="phase-num">02</div><div class="phase-name">AI構築</div><div class="phase-desc">BPOと同時進行でAIワークフローを構築。追加作業ゼロ。</div><ul class="phase-items"><li>取引パターンをAIが学習</li><li>仕訳ルール・科目判定の自動化</li><li>承認フロー・通知の最適化</li><li>会計ソフト連携の自動化設定</li><li>業務マニュアルの自動生成</li></ul></div>
+      <div class="phase-card"><span class="phase-tag">PHASE 03 — 月3末</span><div class="phase-num">03</div><div class="phase-name">納品</div><div class="phase-desc">完成したAIワークフローを御社の資産として納品。</div><ul class="phase-items"><li>AIワークフロー一式を買い取り</li><li>業務マニュアル・運用ガイド付き</li><li>社内研修（オンライン）込み</li><li>導入後1ヶ月サポート</li><li>継続BPOへの切替もいつでも可</li></ul></div>
     </div>
-    <div class="phase-card" style="border-color:var(--accent);border-width:2px">
-      <span class="phase-tag">PHASE 02 — 月1〜3（同時進行）</span>
-      <div class="phase-num">02</div>
-      <div class="phase-name">AI構築</div>
-      <div class="phase-desc">BPOと同時進行でAIワークフローを構築。お客様の追加作業はゼロ。</div>
-      <ul class="phase-items">
-        <li>取引パターンをAIが学習</li>
-        <li>仕訳ルール・科目判定の自動化</li>
-        <li>承認フロー・通知の最適化</li>
-        <li>会計ソフト連携の自動化設定</li>
-        <li>業務マニュアルの自動生成</li>
-      </ul>
+    <div class="phase-bottom">
+      <div><strong>¥98,000〜</strong><span>月額BPO費用</span></div>
+      <div><strong>3ヶ月</strong><span>AI化完了まで</span></div>
+      <div><strong>¥49,800〜</strong><span>AI化後の継続BPO</span></div>
+      <div><strong>0円</strong><span>初期費用</span></div>
+      <div><strong>0円</strong><span>違約金</span></div>
     </div>
-    <div class="phase-card">
-      <span class="phase-tag">PHASE 03 — 月3末</span>
-      <div class="phase-num">03</div>
-      <div class="phase-name">納品</div>
-      <div class="phase-desc">完成したAIワークフローを御社の資産として納品。内製化 or 継続BPOを選択。</div>
-      <ul class="phase-items">
-        <li>AIワークフロー一式を買い取り</li>
-        <li>業務マニュアル・運用ガイド付き</li>
-        <li>社内研修（オンライン）込み</li>
-        <li>導入後1ヶ月サポート</li>
-        <li>継続BPOへの切替もいつでも可</li>
-      </ul>
-    </div>
-  </div>
-  <div class="phase-bottom">
-    <div><strong>¥98,000〜</strong><span>月額BPO費用</span></div>
-    <div><strong>3ヶ月</strong><span>AI化完了まで</span></div>
-    <div><strong>¥49,800〜</strong><span>AI化後の継続BPO</span></div>
-    <div><strong>0円</strong><span>初期費用</span></div>
-    <div><strong>0円</strong><span>違約金</span></div>
   </div>
   <div class="sf"><span class="logo-sm">きづけば<em>AI</em>経理</span><span class="pg">07</span></div>
 </div>
 
-<!-- ===== SLIDE 8: PHASE 01 DETAIL ===== -->
+<!-- ===== SLIDE 8: PHASE 01 ===== -->
 <div class="slide">
-  <span class="tag">PHASE 01 DETAIL</span>
-  <div class="stitle">経理業務をまるごと代行</div>
-  <div class="pd-2col">
-    <div>
-      <div class="pd-tag">BPO — BUSINESS PROCESS OUTSOURCING</div>
-      <div class="pd-title">送るだけ、あとはお任せ。</div>
-      <div class="pd-text">領収書・請求書を写真やメールで送るだけ。AI×専門チームが仕訳・請求・振込まで全処理します。月次レポートは3営業日以内に納品。</div>
-      <div style="font-size:12px;font-weight:700;margin-bottom:6px">対応業務一覧</div>
-      <ul class="pd-checks">
-        <li>領収書・請求書の仕訳入力（AI自動分類+人チェック）</li>
-        <li>銀行明細の自動照合・突合</li>
-        <li>請求書の作成・送付・入金確認</li>
-        <li>振込データの作成（最終承認は貴社）</li>
-        <li>月次試算表・レポート作成（3営業日以内）</li>
-        <li>freee・マネーフォワード・弥生への仕訳連携</li>
-        <li>インボイス制度・電帳法への対応</li>
-      </ul>
-      <div class="pd-note"><strong>お客様がやることは「書類を送る」だけ。</strong>写真を撮って送るだけでOK。専用アプリ・メール・チャットに対応。通帳明細・クレカ明細もまとめて受付。</div>
-    </div>
-    <div class="pd-right">
-      <img class="pd-img" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=500&q=80" alt="">
-      <div class="pd-side-cards">
-        <div class="pd-side-card"><div class="n">3日</div><div class="l">月次レポート納品</div></div>
-        <div class="pd-side-card"><div class="n">24h</div><div class="l">チャット対応</div></div>
-        <div class="pd-side-card"><div class="n">99.5%</div><div class="l">仕訳精度</div></div>
-        <div class="pd-side-card"><div class="n">0件</div><div class="l">勝手な振込実行</div></div>
-      </div>
-      <div style="background:var(--accent-lt);border-radius:6px;padding:10px 14px;font-size:10px;color:var(--accent);line-height:1.5;font-weight:500">対応会計ソフト：freee / マネーフォワード / 弥生会計 / 勘定奉行 / その他ご相談</div>
+  <div class="s-head"><span class="tag">PHASE 01 DETAIL</span><div class="stitle">経理業務をまるごと代行</div></div>
+  <div class="s-body" style="padding:12px 0 0">
+    <div class="pd-2col">
+      <div><div class="pd-tag">BPO — BUSINESS PROCESS OUTSOURCING</div><div class="pd-title">送るだけ、あとはお任せ。</div><div class="pd-text">領収書・請求書を写真やメールで送るだけ。AI×専門チームが仕訳・請求・振込まで全処理します。月次レポートは3営業日以内に納品。</div><div style="font-size:12px;font-weight:700;margin-bottom:6px">対応業務一覧</div><ul class="pd-checks"><li>領収書・請求書の仕訳入力（AI自動分類+人チェック）</li><li>銀行明細の自動照合・突合</li><li>請求書の作成・送付・入金確認</li><li>振込データの作成（最終承認は貴社）</li><li>月次試算表・レポート作成（3営業日以内）</li><li>freee・マネーフォワード・弥生への仕訳連携</li><li>インボイス制度・電帳法への対応</li></ul><div class="pd-note"><strong>お客様がやることは「書類を送る」だけ。</strong>写真を撮って送るだけでOK。専用アプリ・メール・チャットに対応。</div></div>
+      <div class="pd-right"><img class="pd-img" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=500&q=80" alt=""><div class="pd-side-cards"><div class="pd-side-card"><div class="n">3日</div><div class="l">月次レポート納品</div></div><div class="pd-side-card"><div class="n">24h</div><div class="l">チャット対応</div></div><div class="pd-side-card"><div class="n">99.5%</div><div class="l">仕訳精度</div></div><div class="pd-side-card"><div class="n">0件</div><div class="l">勝手な振込実行</div></div></div><div style="background:var(--accent-lt);border-radius:8px;padding:10px 14px;font-size:10px;color:var(--accent);line-height:1.5;font-weight:500">対応会計ソフト：freee / マネーフォワード / 弥生会計 / 勘定奉行 / その他ご相談</div></div>
     </div>
   </div>
   <div class="sf"><span class="logo-sm">きづけば<em>AI</em>経理</span><span class="pg">08</span></div>
 </div>
 
-<!-- ===== SLIDE 9: PHASE 02 DETAIL ===== -->
+<!-- ===== SLIDE 9: PHASE 02 ===== -->
 <div class="slide">
-  <span class="tag">PHASE 02 DETAIL</span>
-  <div class="stitle">BPO中にAIワークフローを構築</div>
-  <div class="pd-2col">
-    <div>
-      <div class="pd-tag">AI WORKFLOW — BPOと同時進行</div>
-      <div class="pd-title">丸投げしている裏側で、<br>AIが御社を学習中。</div>
-      <div class="pd-text">BPOで実際の取引データを処理しながら、裏側で御社専用のAIワークフローを構築。お客様の追加作業はゼロ。3ヶ月間でAIの精度を段階的に引き上げます。</div>
-      <div style="font-size:12px;font-weight:700;margin-bottom:6px">AI構築プロセス</div>
-      <ul class="pd-checks">
-        <li>月1：取引データ収集 → パターン分析開始</li>
-        <li>月1-2：仕訳ルール・科目判定ロジックの自動生成</li>
-        <li>月2：承認フロー・通知ルールの最適化</li>
-        <li>月2-3：会計ソフトAPI連携の自動化設定</li>
-        <li>月3：業務マニュアル・運用ガイドの自動生成</li>
-        <li>月3：テスト運用 → 精度検証 → 最終調整</li>
-      </ul>
-      <div class="pd-note"><strong>Phase 01と02は完全に同時進行。</strong>BPO業務の裏側で自動的にAI学習が進むため、お客様側の追加作業・追加費用は一切ありません。</div>
-    </div>
-    <div class="pd-right">
-      <img class="pd-img" src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=500&q=80" alt="">
-      <div style="background:var(--navy);border-radius:8px;padding:14px 16px">
-        <div style="font-size:10px;color:rgba(255,255,255,.4);margin-bottom:8px">AI学習の進捗イメージ</div>
-        <div style="display:flex;gap:6px;align-items:flex-end;height:60px;margin-bottom:8px">
-          <div style="flex:1;background:var(--accent);border-radius:3px 3px 0 0;height:25%"></div>
-          <div style="flex:1;background:var(--accent);border-radius:3px 3px 0 0;height:40%"></div>
-          <div style="flex:1;background:var(--accent);border-radius:3px 3px 0 0;height:55%"></div>
-          <div style="flex:1;background:var(--accent);border-radius:3px 3px 0 0;height:65%"></div>
-          <div style="flex:1;background:var(--accent);border-radius:3px 3px 0 0;height:78%"></div>
-          <div style="flex:1;background:var(--accent);border-radius:3px 3px 0 0;height:85%"></div>
-          <div style="flex:1;background:var(--accent);border-radius:3px 3px 0 0;height:90%"></div>
-          <div style="flex:1;background:var(--accent);border-radius:3px 3px 0 0;height:93%"></div>
-          <div style="flex:1;background:var(--accent);border-radius:3px 3px 0 0;height:96%"></div>
-          <div style="flex:1;background:var(--accent-hi);border-radius:3px 3px 0 0;height:98%"></div>
-          <div style="flex:1;background:var(--accent-hi);border-radius:3px 3px 0 0;height:99%"></div>
-          <div style="flex:1;background:var(--accent-hi);border-radius:3px 3px 0 0;height:100%"></div>
-        </div>
-        <div style="display:flex;justify-content:space-between;font-size:9px;color:rgba(255,255,255,.35)"><span>月1</span><span>月2</span><span>月3 完了</span></div>
-      </div>
-      <div class="pd-side-cards">
-        <div class="pd-side-card"><div class="n">0</div><div class="l">お客様側の追加作業</div></div>
-        <div class="pd-side-card"><div class="n">0円</div><div class="l">AI構築の追加費用</div></div>
-      </div>
+  <div class="s-head"><span class="tag">PHASE 02 DETAIL</span><div class="stitle">BPO中にAIワークフローを構築</div></div>
+  <div class="s-body" style="padding:12px 0 0">
+    <div class="pd-2col">
+      <div><div class="pd-tag">AI WORKFLOW — BPOと同時進行</div><div class="pd-title">丸投げしている裏側で、<br>AIが御社を学習中。</div><div class="pd-text">BPOで実際の取引データを処理しながら、裏側で御社専用のAIワークフローを構築。お客様の追加作業はゼロです。</div><div style="font-size:12px;font-weight:700;margin-bottom:6px">AI構築プロセス</div><ul class="pd-checks"><li>月1：取引データ収集 → パターン分析開始</li><li>月1-2：仕訳ルール・科目判定ロジックの自動生成</li><li>月2：承認フロー・通知ルールの最適化</li><li>月2-3：会計ソフトAPI連携の自動化設定</li><li>月3：業務マニュアル・運用ガイドの自動生成</li><li>月3：テスト運用 → 精度検証 → 最終調整</li></ul><div class="pd-note"><strong>Phase 01と02は完全に同時進行。</strong>お客様側の追加作業・追加費用は一切ありません。</div></div>
+      <div class="pd-right"><img class="pd-img" src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=500&q=80" alt=""><div style="background:var(--navy);border-radius:8px;padding:14px 16px"><div style="font-size:10px;color:rgba(255,255,255,.4);margin-bottom:8px">AI学習の進捗イメージ</div><div style="display:flex;gap:5px;align-items:flex-end;height:60px;margin-bottom:8px"><div style="flex:1;background:var(--accent);border-radius:3px 3px 0 0;height:25%"></div><div style="flex:1;background:var(--accent);border-radius:3px 3px 0 0;height:40%"></div><div style="flex:1;background:var(--accent);border-radius:3px 3px 0 0;height:55%"></div><div style="flex:1;background:var(--accent);border-radius:3px 3px 0 0;height:65%"></div><div style="flex:1;background:var(--accent);border-radius:3px 3px 0 0;height:78%"></div><div style="flex:1;background:var(--accent);border-radius:3px 3px 0 0;height:85%"></div><div style="flex:1;background:var(--accent);border-radius:3px 3px 0 0;height:90%"></div><div style="flex:1;background:var(--accent);border-radius:3px 3px 0 0;height:93%"></div><div style="flex:1;background:var(--accent);border-radius:3px 3px 0 0;height:96%"></div><div style="flex:1;background:var(--accent-hi);border-radius:3px 3px 0 0;height:98%"></div><div style="flex:1;background:var(--accent-hi);border-radius:3px 3px 0 0;height:99%"></div><div style="flex:1;background:var(--accent-hi);border-radius:3px 3px 0 0;height:100%"></div></div><div style="display:flex;justify-content:space-between;font-size:9px;color:rgba(255,255,255,.35)"><span>月1</span><span>月2</span><span>月3 完了</span></div></div><div class="pd-side-cards"><div class="pd-side-card"><div class="n">0</div><div class="l">お客様側の追加作業</div></div><div class="pd-side-card"><div class="n">0円</div><div class="l">AI構築の追加費用</div></div></div></div>
     </div>
   </div>
   <div class="sf"><span class="logo-sm">きづけば<em>AI</em>経理</span><span class="pg">09</span></div>
 </div>
 
-<!-- ===== SLIDE 10: PHASE 03 DETAIL ===== -->
+<!-- ===== SLIDE 10: PHASE 03 ===== -->
 <div class="slide">
-  <span class="tag">PHASE 03 DETAIL</span>
-  <div class="stitle">AI経理基盤を御社の資産に</div>
-  <div class="pd-2col">
-    <div>
-      <div class="pd-tag">DELIVERY — ワークフロー納品</div>
-      <div class="pd-title">完成したAI経理基盤を、<br>買い取って自社の資産に。</div>
-      <div class="pd-text">3ヶ月間で構築したAIワークフローを御社に納品。内製化も、継続BPOも自由に選べます。どちらを選んでも、ワークフローは御社の資産です。</div>
-      <div style="font-size:12px;font-weight:700;margin-bottom:6px">納品物一覧</div>
-      <div class="del-grid" style="margin-top:0">
-        <div class="del-card"><div class="del-icon">🤖</div><div><h4>AIワークフロー一式</h4><p>仕訳自動化・科目判定・承認フローなどAI経理基盤</p></div></div>
-        <div class="del-card"><div class="del-icon">📖</div><div><h4>業務マニュアル</h4><p>操作手順・トラブルシューティング・FAQ付き</p></div></div>
-        <div class="del-card"><div class="del-icon">🎓</div><div><h4>社内研修（オンライン）</h4><p>操作方法・運用フローのレクチャー（録画あり）</p></div></div>
-        <div class="del-card"><div class="del-icon">🛡️</div><div><h4>1ヶ月サポート</h4><p>導入後1ヶ月間は質問・調整に無料対応</p></div></div>
-      </div>
-    </div>
-    <div class="pd-right">
-      <img class="pd-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80" alt="">
-      <div style="background:var(--gray-bg);border:1px solid var(--gray-line);border-radius:8px;padding:14px 16px">
-        <div style="font-size:12px;font-weight:700;margin-bottom:8px">納品後の2つの選択肢</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-          <div style="background:var(--white);border:1px solid var(--gray-line);border-radius:6px;padding:10px;text-align:center">
-            <div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:4px">A. 内製化</div>
-            <div style="font-size:10px;color:var(--sub);line-height:1.5">AIワークフローを自社で運用。BPOコスト完全ゼロに。経理担当者がいる企業に最適。</div>
-          </div>
-          <div style="background:var(--white);border:2px solid var(--accent);border-radius:6px;padding:10px;text-align:center">
-            <div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:4px">B. 継続BPO</div>
-            <div style="font-size:10px;color:var(--sub);line-height:1.5">AI化済みだから月額約半額（¥49,800〜）で継続。経理専任者がいない企業に最適。</div>
-          </div>
-        </div>
-      </div>
-      <div class="pd-side-cards">
-        <div class="pd-side-card"><div class="n">買取</div><div class="l">WFの知的財産権</div></div>
-        <div class="pd-side-card"><div class="n">自由</div><div class="l">内製化/継続の選択</div></div>
-      </div>
+  <div class="s-head"><span class="tag">PHASE 03 DETAIL</span><div class="stitle">AI経理基盤を御社の資産に</div></div>
+  <div class="s-body" style="padding:12px 0 0">
+    <div class="pd-2col">
+      <div><div class="pd-tag">DELIVERY — ワークフロー納品</div><div class="pd-title">完成したAI経理基盤を、<br>買い取って自社の資産に。</div><div class="pd-text">3ヶ月間で構築したAIワークフローを御社に納品。内製化も、継続BPOも自由に選べます。</div><div style="font-size:12px;font-weight:700;margin-bottom:6px">納品物一覧</div><div class="del-grid" style="margin-top:0"><div class="del-card"><div class="del-icon">🤖</div><div><h4>AIワークフロー一式</h4><p>仕訳自動化・科目判定・承認フローなどAI経理基盤</p></div></div><div class="del-card"><div class="del-icon">📖</div><div><h4>業務マニュアル</h4><p>操作手順・トラブルシューティング・FAQ付き</p></div></div><div class="del-card"><div class="del-icon">🎓</div><div><h4>社内研修（オンライン）</h4><p>操作方法・運用フローのレクチャー（録画あり）</p></div></div><div class="del-card"><div class="del-icon">🛡️</div><div><h4>1ヶ月サポート</h4><p>導入後1ヶ月間は質問・調整に無料対応</p></div></div></div></div>
+      <div class="pd-right"><img class="pd-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80" alt=""><div style="background:var(--gray-bg);border:1px solid var(--gray-line);border-radius:8px;padding:16px"><div style="font-size:12px;font-weight:700;margin-bottom:10px">納品後の2つの選択肢</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="background:var(--white);border:1px solid var(--gray-line);border-radius:6px;padding:12px;text-align:center"><div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:4px">A. 内製化</div><div style="font-size:10px;color:var(--sub);line-height:1.5">AIワークフローを自社で運用。BPOコスト完全ゼロに。</div></div><div style="background:var(--white);border:2px solid var(--accent);border-radius:6px;padding:12px;text-align:center"><div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:4px">B. 継続BPO</div><div style="font-size:10px;color:var(--sub);line-height:1.5">AI化済みだから月額約半額（¥49,800〜）で継続。</div></div></div></div><div class="pd-side-cards"><div class="pd-side-card"><div class="n">買取</div><div class="l">WFの知的財産権</div></div><div class="pd-side-card"><div class="n">自由</div><div class="l">内製化/継続の選択</div></div></div></div>
     </div>
   </div>
   <div class="sf"><span class="logo-sm">きづけば<em>AI</em>経理</span><span class="pg">10</span></div>
@@ -563,113 +439,57 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;color:var(--text);backgroun
 
 <!-- ===== SLIDE 11: COMPARISON ===== -->
 <div class="slide">
-  <span class="tag">COMPARISON</span>
-  <div class="stitle">他の選択肢との違い</div>
-  <table class="cmp-table">
-    <thead><tr>
-      <th style="width:130px"></th>
-      <th class="th-other">通常のBPO</th>
-      <th class="th-other">経理派遣</th>
-      <th class="th-other">AI導入コンサル</th>
-      <th class="th-other">経理正社員採用</th>
-      <th class="th-ours">きづけばAI経理</th>
-    </tr></thead>
-    <tbody>
-      <tr><td>日常の経理代行</td><td class="td-other">✓ 対応</td><td class="td-other">△ 属人的</td><td class="td-other">✗ 対象外</td><td class="td-other">✓ 対応</td><td class="td-ours">✓ 全対応</td></tr>
-      <tr><td>AI導入・自動化</td><td class="td-other">✗</td><td class="td-other">✗</td><td class="td-other">✓（高額）</td><td class="td-other">✗</td><td class="td-ours">✓ BPO中に完了</td></tr>
-      <tr><td>社内にノウハウ蓄積</td><td class="td-other">✗ 外注のまま</td><td class="td-other">△ 退職リスク</td><td class="td-other">△ 運用課題</td><td class="td-other">△ 属人化</td><td class="td-ours">✓ WF納品</td></tr>
-      <tr><td>月額コスト推移</td><td class="td-other">→ 横ばい</td><td class="td-other">→ 横ばい</td><td class="td-other">↗ 初期投資大</td><td class="td-other">→ 横ばい</td><td class="td-ours">↘ 3ヶ月後に半減</td></tr>
-      <tr><td>初期費用</td><td class="td-other">0〜10万円</td><td class="td-other">紹介料30〜50%</td><td class="td-other">300〜500万円</td><td class="td-other">採用費50〜100万</td><td class="td-ours">0円</td></tr>
-      <tr><td>導入スピード</td><td class="td-other">1〜2週間</td><td class="td-other">1〜3ヶ月</td><td class="td-other">3〜6ヶ月</td><td class="td-other">1〜6ヶ月</td><td class="td-ours">即日開始</td></tr>
-      <tr><td>年間総コスト目安</td><td class="td-other">120〜180万円</td><td class="td-other">360〜480万円</td><td class="td-other">500〜800万円</td><td class="td-other">480〜600万円</td><td class="td-ours">89〜120万円</td></tr>
-    </tbody>
-  </table>
-  <div class="cmp-note">きづけばAI経理 = 「BPO + AI導入」を同時に実現する唯一のサービス。年間コストは他の選択肢の1/3〜1/5。</div>
+  <div class="s-head"><span class="tag">COMPARISON</span><div class="stitle">他の選択肢との違い</div></div>
+  <div class="s-body spread" style="padding:16px 0 0;gap:14px">
+    <table class="cmp-table">
+      <thead><tr><th style="width:120px"></th><th class="th-other">通常のBPO</th><th class="th-other">経理派遣</th><th class="th-other">AI導入コンサル</th><th class="th-other">経理正社員採用</th><th class="th-ours">きづけばAI経理</th></tr></thead>
+      <tbody>
+        <tr><td>日常の経理代行</td><td class="td-other">✓ 対応</td><td class="td-other">△ 属人的</td><td class="td-other">✗ 対象外</td><td class="td-other">✓ 対応</td><td class="td-ours">✓ 全対応</td></tr>
+        <tr><td>AI導入・自動化</td><td class="td-other">✗</td><td class="td-other">✗</td><td class="td-other">✓（高額）</td><td class="td-other">✗</td><td class="td-ours">✓ BPO中に完了</td></tr>
+        <tr><td>社内にノウハウ蓄積</td><td class="td-other">✗ 外注のまま</td><td class="td-other">△ 退職リスク</td><td class="td-other">△ 運用課題</td><td class="td-other">△ 属人化</td><td class="td-ours">✓ WF納品</td></tr>
+        <tr><td>月額コスト推移</td><td class="td-other">→ 横ばい</td><td class="td-other">→ 横ばい</td><td class="td-other">↗ 初期投資大</td><td class="td-other">→ 横ばい</td><td class="td-ours">↘ 3ヶ月後に半減</td></tr>
+        <tr><td>初期費用</td><td class="td-other">0〜10万円</td><td class="td-other">紹介料30〜50%</td><td class="td-other">300〜500万円</td><td class="td-other">採用費50〜100万</td><td class="td-ours">0円</td></tr>
+        <tr><td>導入スピード</td><td class="td-other">1〜2週間</td><td class="td-other">1〜3ヶ月</td><td class="td-other">3〜6ヶ月</td><td class="td-other">1〜6ヶ月</td><td class="td-ours">即日開始</td></tr>
+        <tr><td>年間総コスト目安</td><td class="td-other">120〜180万円</td><td class="td-other">360〜480万円</td><td class="td-other">500〜800万円</td><td class="td-other">480〜600万円</td><td class="td-ours">89〜120万円</td></tr>
+      </tbody>
+    </table>
+    <div class="cmp-note">きづけばAI経理 = 「BPO + AI導入」を同時に実現する唯一のサービス。年間コストは他の選択肢の1/3〜1/5。</div>
+  </div>
   <div class="sf"><span class="logo-sm">きづけば<em>AI</em>経理</span><span class="pg">11</span></div>
 </div>
 
 <!-- ===== SLIDE 12: PRICING ===== -->
 <div class="slide">
-  <span class="tag">PRICING</span>
-  <div class="stitle">料金プラン</div>
-  <div class="price-row">
-    <div class="pr-card">
-      <div class="pr-name">経理BPOのみ</div>
-      <div class="pr-price">¥98,000〜<span>/月</span></div>
-      <div class="pr-note">AI導入なし・経理代行のみ。まずはBPOだけ試したい方に。</div>
-      <ul class="pr-list">
-        <li>仕訳入力・請求書処理・振込作成</li>
-        <li>銀行明細の照合・突合</li>
-        <li>月次試算表・レポート納品（3営業日）</li>
-        <li>会計ソフト連携設定（freee/MF/弥生）</li>
-        <li>AI×専門チームのハイブリッド処理</li>
-        <li>インボイス・電帳法の制度対応</li>
-        <li>チャットサポート（24h受付）</li>
-      </ul>
-      <div class="pr-target">対象：まずは経理負担をゼロにしたい企業。AI導入は後から追加可能。</div>
+  <div class="s-head"><span class="tag">PRICING</span><div class="stitle">料金プラン</div></div>
+  <div class="s-body spread" style="padding:14px 0 0;gap:12px">
+    <div class="price-row">
+      <div class="pr-card"><div class="pr-name">経理BPOのみ</div><div class="pr-price">¥98,000〜<span>/月</span></div><div class="pr-note">AI導入なし・経理代行のみ</div><ul class="pr-list"><li>仕訳入力・請求書処理・振込作成</li><li>銀行明細の照合・突合</li><li>月次試算表・レポート納品（3営業日）</li><li>会計ソフト連携設定（freee/MF/弥生）</li><li>AI×専門チームのハイブリッド処理</li><li>インボイス・電帳法の制度対応</li><li>チャットサポート（24h受付）</li></ul><div class="pr-target">対象：まずは経理負担をゼロにしたい企業</div></div>
+      <div class="pr-card feat"><div class="pr-badge">おすすめ</div><div class="pr-name">BPO + AI導入パック</div><div class="pr-price">¥298,000〜</div><div class="pr-note">BPO（¥98,000〜/月 × 3ヶ月）+ AI構築・納品</div><ul class="pr-list"><li>上記BPOの全業務（3ヶ月間）</li><li>御社専用AIワークフロー構築・納品</li><li>業務マニュアル・運用ガイド</li><li>社内研修（オンライン・録画付き）</li><li>導入後1ヶ月サポート</li><li>AIワークフローの知的財産権は御社に帰属</li><li>継続BPOへの切替もいつでも可</li></ul><div class="pr-target">対象：経理の丸投げとAI化を同時に実現したい企業</div></div>
+      <div class="pr-card"><div class="pr-name">AI化後の継続BPO</div><div class="pr-price">¥49,800〜<span>/月</span></div><div class="pr-note">AI化済みだから約半額で継続</div><ul class="pr-list"><li>経理BPOと同じ業務範囲</li><li>AI自動処理 → 人がチェック</li><li>月次レポート継続納品</li><li>制度変更（インボイス等）の自動対応</li><li>AIワークフローの継続改善</li><li>いつでもAIワークフロー買取に切替可</li><li>1ヶ月単位で継続・解約可（違約金なし）</li></ul><div class="pr-target">対象：AI化後も経理を任せ続けたい企業</div></div>
     </div>
-    <div class="pr-card feat">
-      <div class="pr-badge">おすすめ</div>
-      <div class="pr-name">BPO + AI導入パック</div>
-      <div class="pr-price">¥298,000〜</div>
-      <div class="pr-note">BPO（¥98,000〜/月 × 3ヶ月）+ AIワークフロー構築・納品。最もコスパの高いプラン。</div>
-      <ul class="pr-list">
-        <li>上記BPOの全業務（3ヶ月間）</li>
-        <li>御社専用AIワークフロー構築・納品</li>
-        <li>業務マニュアル・運用ガイド</li>
-        <li>社内研修（オンライン・録画付き）</li>
-        <li>導入後1ヶ月サポート</li>
-        <li>AIワークフローの知的財産権は御社に帰属</li>
-        <li>継続BPOへの切替もいつでも可</li>
-      </ul>
-      <div class="pr-target">対象：経理の丸投げとAI化を同時に実現したい企業。最も多いご契約プラン。</div>
-    </div>
-    <div class="pr-card">
-      <div class="pr-name">AI化後の継続BPO</div>
-      <div class="pr-price">¥49,800〜<span>/月</span></div>
-      <div class="pr-note">AI化済みだから約半額。経理専任者がいない企業に最適。</div>
-      <ul class="pr-list">
-        <li>経理BPOと同じ業務範囲</li>
-        <li>AI自動処理 → 人がチェックの効率体制</li>
-        <li>月次レポート継続納品</li>
-        <li>制度変更（インボイス等）の自動対応</li>
-        <li>AIワークフローの継続改善</li>
-        <li>いつでもAIワークフロー買取に切替可</li>
-        <li>1ヶ月単位で継続・解約可（違約金なし）</li>
-      </ul>
-      <div class="pr-target">対象：AI化後も経理を任せ続けたい企業。内製化に切替もいつでも可能。</div>
-    </div>
-  </div>
-  <div style="background:var(--gray-bg);border-radius:6px;padding:10px 20px;margin-top:10px;font-size:11px;color:var(--sub);text-align:center;line-height:1.6">
-    <strong style="color:var(--text)">料金は業務量・取引件数・対応範囲によって変わります。</strong> まずは無料相談でお見積もりします。初期費用・違約金は一切ありません。
+    <div style="background:var(--gray-bg);border-radius:8px;padding:12px 20px;font-size:11px;color:var(--sub);text-align:center;line-height:1.6"><strong style="color:var(--text)">料金は業務量・取引件数・対応範囲によって変わります。</strong> まずは無料相談でお見積もりします。初期費用・違約金は一切ありません。</div>
   </div>
   <div class="sf"><span class="logo-sm">きづけば<em>AI</em>経理</span><span class="pg">12</span></div>
 </div>
 
 <!-- ===== SLIDE 13: COST SIMULATION ===== -->
 <div class="slide">
-  <span class="tag">COST SIMULATION</span>
-  <div class="stitle">コストシミュレーション（年間比較）</div>
-  <p class="ssub">従業員10〜30名規模、月間取引100〜300件の企業を想定したモデルケースです。</p>
-  <table class="sim-table">
-    <thead><tr><th>項目</th><th>経理正社員（1名）</th><th>通常のBPO</th><th>きづけばAI経理<br>（BPO+AI導入パック）</th></tr></thead>
-    <tbody>
-      <tr><td>初期費用</td><td>採用費 50〜100万円</td><td>0〜10万円</td><td class="highlight">0円</td></tr>
-      <tr><td>月1-3のコスト</td><td>40万円/月 × 3</td><td>12万円/月 × 3</td><td class="highlight">9.8万円/月 × 3</td></tr>
-      <tr><td>AI導入費用</td><td>別途300〜500万円</td><td>なし（AI化されない）</td><td class="highlight">BPO費用に含む</td></tr>
-      <tr><td>月4-12のコスト</td><td>40万円/月 × 9</td><td>12万円/月 × 9</td><td class="highlight">4.98万円/月 × 9<br>（AI化後の継続BPO）</td></tr>
-      <tr><td>退職リスク</td><td>引継100万円+</td><td>なし</td><td class="highlight">なし</td></tr>
-      <tr class="total"><td style="text-align:left;font-weight:900">年間総コスト</td><td>530〜980万円</td><td>144〜180万円</td><td class="highlight" style="font-size:16px;font-weight:900">74〜89万円</td></tr>
-    </tbody>
-  </table>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px">
-    <div style="background:var(--accent-lt);border-radius:8px;padding:14px 18px">
-      <div style="font-size:20px;font-weight:900;color:var(--accent);margin-bottom:4px">年間 最大 -891万円</div>
-      <div style="font-size:11px;color:var(--sub);line-height:1.6">正社員（+AI導入コンサル）と比較した場合の年間削減額。2年目以降はさらにコスト差が拡大します。</div>
-    </div>
-    <div style="background:var(--accent-lt);border-radius:8px;padding:14px 18px">
-      <div style="font-size:20px;font-weight:900;color:var(--accent);margin-bottom:4px">通常BPO比 -50%以上</div>
-      <div style="font-size:11px;color:var(--sub);line-height:1.6">通常のBPOと比較しても、AI化後の月額が半額になるため年間で大幅に下回ります。</div>
+  <div class="s-head"><span class="tag">COST SIMULATION</span><div class="stitle">コストシミュレーション（年間比較）</div><p class="ssub">従業員10〜30名規模、月間取引100〜300件の企業を想定したモデルケースです。</p></div>
+  <div class="s-body spread" style="padding:16px 0 0;gap:16px">
+    <table class="sim-table">
+      <thead><tr><th>項目</th><th>経理正社員（1名）</th><th>通常のBPO</th><th>きづけばAI経理<br>（BPO+AI導入パック）</th></tr></thead>
+      <tbody>
+        <tr><td>初期費用</td><td>採用費 50〜100万円</td><td>0〜10万円</td><td class="highlight">0円</td></tr>
+        <tr><td>月1-3のコスト</td><td>40万円/月 × 3</td><td>12万円/月 × 3</td><td class="highlight">9.8万円/月 × 3</td></tr>
+        <tr><td>AI導入費用</td><td>別途300〜500万円</td><td>なし（AI化されない）</td><td class="highlight">BPO費用に含む</td></tr>
+        <tr><td>月4-12のコスト</td><td>40万円/月 × 9</td><td>12万円/月 × 9</td><td class="highlight">4.98万円/月 × 9<br>（AI化後の継続BPO）</td></tr>
+        <tr><td>退職リスク</td><td>引継100万円+</td><td>なし</td><td class="highlight">なし</td></tr>
+        <tr class="total"><td style="text-align:left;font-weight:900">年間総コスト</td><td>530〜980万円</td><td>144〜180万円</td><td class="highlight" style="font-size:16px;font-weight:900">74〜89万円</td></tr>
+      </tbody>
+    </table>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div style="background:var(--accent-lt);border-radius:10px;padding:18px 22px"><div style="font-size:22px;font-weight:900;color:var(--accent);margin-bottom:6px">年間 最大 -891万円</div><div style="font-size:12px;color:var(--sub);line-height:1.7">正社員（+AI導入コンサル）と比較した場合の年間削減額。2年目以降はさらにコスト差が拡大します。</div></div>
+      <div style="background:var(--accent-lt);border-radius:10px;padding:18px 22px"><div style="font-size:22px;font-weight:900;color:var(--accent);margin-bottom:6px">通常BPO比 -50%以上</div><div style="font-size:12px;color:var(--sub);line-height:1.7">通常のBPOと比較しても、AI化後の月額が半額になるため年間で大幅に下回ります。</div></div>
     </div>
   </div>
   <div class="sf"><span class="logo-sm">きづけば<em>AI</em>経理</span><span class="pg">13</span></div>
@@ -677,40 +497,17 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;color:var(--text);backgroun
 
 <!-- ===== SLIDE 14: WHY US ===== -->
 <div class="slide">
-  <span class="tag">WHY US</span>
-  <div class="stitle">きづけばAI経理が選ばれる理由</div>
-  <div class="why-grid">
-    <div class="why-card">
-      <div class="why-num">01</div>
-      <h4>BPO中にAI導入が<br>完了する唯一のサービス</h4>
-      <p>経理を丸投げしている間にAIワークフローを構築。3ヶ月後にはAI経理基盤が御社の資産に。内製化 or 継続、どちらも選べる。お客様の追加作業はゼロ。</p>
+  <div class="s-head"><span class="tag">WHY US</span><div class="stitle">きづけばAI経理が選ばれる理由</div></div>
+  <div class="s-body spread" style="padding:16px 0 0;gap:14px">
+    <div class="why-grid">
+      <div class="why-card"><div class="why-num">01</div><h4>BPO中にAI導入が<br>完了する唯一のサービス</h4><p>経理を丸投げしている間にAIワークフローを構築。3ヶ月後にはAI経理基盤が御社の資産に。お客様の追加作業はゼロ。</p></div>
+      <div class="why-card"><div class="why-num">02</div><h4>時間が経つほど<br>コストが下がる</h4><p>通常BPOは毎月同額。きづけばAI経理は3ヶ月後に約半額、内製化すればゼロに。AI化で人的工数が激減。</p></div>
+      <div class="why-card"><div class="why-num">03</div><h4>既存ツール・税理士と<br>そのまま併用OK</h4><p>freee・マネーフォワード・弥生に対応。顧問税理士との契約をそのまま継続。制度変更もWFが自動吸収。</p></div>
     </div>
-    <div class="why-card">
-      <div class="why-num">02</div>
-      <h4>時間が経つほど<br>コストが下がる</h4>
-      <p>通常BPOは毎月同額。きづけばAI経理は3ヶ月後に約半額、内製化すればゼロに。AI化で人的工数が激減するから実現できる料金モデル。</p>
-    </div>
-    <div class="why-card">
-      <div class="why-num">03</div>
-      <h4>既存ツール・税理士と<br>そのまま併用OK</h4>
-      <p>freee・マネーフォワード・弥生に対応。顧問税理士との契約をそのまま継続。インボイス・電帳法の制度変更もワークフローが自動吸収。</p>
-    </div>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px">
-    <div style="background:var(--navy);border-radius:8px;padding:18px 16px;text-align:center">
-      <div style="font-size:24px;margin-bottom:4px">📉</div>
-      <div style="font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px">引き継ぎコスト激減</div>
-      <div style="font-size:10px;color:rgba(255,255,255,.5);line-height:1.5">マニュアル・ワークフローが構築済み。人の入れ替わりに強い体制が手に入る。担当者退職時の引き継ぎ期間ゼロ。</div>
-    </div>
-    <div style="background:var(--navy);border-radius:8px;padding:18px 16px;text-align:center">
-      <div style="font-size:24px;margin-bottom:4px">🤖</div>
-      <div style="font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px">経理の人員削減が可能</div>
-      <div style="font-size:10px;color:rgba(255,255,255,.5);line-height:1.5">AIが日常業務を処理するため、経理専任者なしでも回る仕組みを構築。年間480万円の人件費削減。</div>
-    </div>
-    <div style="background:var(--navy);border-radius:8px;padding:18px 16px;text-align:center">
-      <div style="font-size:24px;margin-bottom:4px">⚡</div>
-      <div style="font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px">SaaS化で即導入</div>
-      <div style="font-size:10px;color:rgba(255,255,255,.5);line-height:1.5">完成済みのワークフローを納品するため、ゼロからAI構築するより圧倒的に早い。導入検討〜運用開始まで最短即日。</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+      <div style="background:var(--navy);border-radius:10px;padding:22px 18px;text-align:center"><div style="font-size:26px;margin-bottom:6px">📉</div><div style="font-size:15px;font-weight:700;color:var(--white);margin-bottom:6px">引き継ぎコスト激減</div><div style="font-size:11px;color:rgba(255,255,255,.5);line-height:1.6">マニュアル・ワークフローが構築済み。人の入れ替わりに強い体制。担当者退職時の引き継ぎ期間ゼロ。</div></div>
+      <div style="background:var(--navy);border-radius:10px;padding:22px 18px;text-align:center"><div style="font-size:26px;margin-bottom:6px">🤖</div><div style="font-size:15px;font-weight:700;color:var(--white);margin-bottom:6px">経理の人員削減が可能</div><div style="font-size:11px;color:rgba(255,255,255,.5);line-height:1.6">AIが日常業務を処理。経理専任者なしでも回る仕組みを構築。年間480万円の人件費削減。</div></div>
+      <div style="background:var(--navy);border-radius:10px;padding:22px 18px;text-align:center"><div style="font-size:26px;margin-bottom:6px">⚡</div><div style="font-size:15px;font-weight:700;color:var(--white);margin-bottom:6px">SaaS化で即導入</div><div style="font-size:11px;color:rgba(255,255,255,.5);line-height:1.6">完成済みのワークフローを納品。ゼロからAI構築するより圧倒的に早い。最短即日で運用開始。</div></div>
     </div>
   </div>
   <div class="sf"><span class="logo-sm">きづけば<em>AI</em>経理</span><span class="pg">14</span></div>
@@ -718,34 +515,34 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;color:var(--text);backgroun
 
 <!-- ===== SLIDE 15: FLOW ===== -->
 <div class="slide">
-  <span class="tag">HOW IT WORKS</span>
-  <div class="stitle">導入の流れ</div>
-  <p class="ssub">お申し込みから最短3ヶ月でAI経理基盤が完成します。</p>
-  <div class="flow-row">
-    <div class="flow-card"><div class="flow-num">1</div><h4>無料相談・お見積り</h4><p>業務範囲・取引件数をヒアリング。概算費用を即日ご案内。</p></div>
-    <div class="flow-card"><div class="flow-num">2</div><h4>NDA締結・BPO開始</h4><p>秘密保持契約締結後、書類をお送りいただくだけで即日開始。</p></div>
-    <div class="flow-card"><div class="flow-num">3</div><h4>BPO + AI構築（同時進行）</h4><p>経理代行しながら裏側でAI学習。お客様の追加作業ゼロ。</p></div>
-    <div class="flow-card"><div class="flow-num">4</div><h4>納品 or 継続BPO</h4><p>AI経理基盤の買取 or 継続BPOを選択。いつでも切替可能。</p></div>
-  </div>
-  <div style="margin-top:14px;background:var(--gray-bg);border:1px solid var(--gray-line);border-radius:8px;padding:16px 20px">
-    <div style="font-size:13px;font-weight:700;margin-bottom:10px">詳細タイムライン</div>
-    <div style="display:grid;grid-template-columns:80px 1fr 1fr 1fr;gap:0;font-size:11px">
-      <div style="font-weight:700;padding:6px 0;border-bottom:1px solid var(--gray-line)"></div>
-      <div style="font-weight:700;padding:6px 8px;border-bottom:1px solid var(--gray-line);text-align:center;color:var(--accent)">月1</div>
-      <div style="font-weight:700;padding:6px 8px;border-bottom:1px solid var(--gray-line);text-align:center;color:var(--accent)">月2</div>
-      <div style="font-weight:700;padding:6px 8px;border-bottom:1px solid var(--gray-line);text-align:center;color:var(--accent)">月3</div>
-      <div style="padding:6px 0;border-bottom:1px solid var(--gray-line);font-weight:600">Phase 01</div>
-      <div style="padding:6px 8px;border-bottom:1px solid var(--gray-line);background:var(--accent-lt);text-align:center;color:var(--accent);font-weight:500;border-radius:4px 0 0 4px">経理BPO開始</div>
-      <div style="padding:6px 8px;border-bottom:1px solid var(--gray-line);background:var(--accent-lt);text-align:center;color:var(--accent);font-weight:500">経理BPO継続</div>
-      <div style="padding:6px 8px;border-bottom:1px solid var(--gray-line);background:var(--accent-lt);text-align:center;color:var(--accent);font-weight:500;border-radius:0 4px 4px 0">経理BPO完了</div>
-      <div style="padding:6px 0;border-bottom:1px solid var(--gray-line);font-weight:600">Phase 02</div>
-      <div style="padding:6px 8px;border-bottom:1px solid var(--gray-line);background:#e0f2fe;text-align:center;color:#0369a1;font-weight:500;border-radius:4px 0 0 4px">データ分析・学習</div>
-      <div style="padding:6px 8px;border-bottom:1px solid var(--gray-line);background:#e0f2fe;text-align:center;color:#0369a1;font-weight:500">WF構築・最適化</div>
-      <div style="padding:6px 8px;border-bottom:1px solid var(--gray-line);background:#e0f2fe;text-align:center;color:#0369a1;font-weight:500;border-radius:0 4px 4px 0">テスト・調整</div>
-      <div style="padding:6px 0;font-weight:600">Phase 03</div>
-      <div style="padding:6px 8px;color:var(--muted);text-align:center">—</div>
-      <div style="padding:6px 8px;color:var(--muted);text-align:center">—</div>
-      <div style="padding:6px 8px;background:var(--green-lt);text-align:center;color:var(--green);font-weight:600;border-radius:4px">納品・研修</div>
+  <div class="s-head"><span class="tag">HOW IT WORKS</span><div class="stitle">導入の流れ</div><p class="ssub">お申し込みから最短3ヶ月でAI経理基盤が完成します。</p></div>
+  <div class="s-body spread" style="padding:16px 0 0;gap:16px">
+    <div class="flow-row">
+      <div class="flow-card"><div class="flow-num">1</div><h4>無料相談・お見積り</h4><p>業務範囲・取引件数をヒアリング。概算費用を即日ご案内。</p></div>
+      <div class="flow-card"><div class="flow-num">2</div><h4>NDA締結・BPO開始</h4><p>秘密保持契約締結後、書類をお送りいただくだけで即日開始。</p></div>
+      <div class="flow-card"><div class="flow-num">3</div><h4>BPO + AI構築（同時）</h4><p>経理代行しながら裏側でAI学習。お客様の追加作業ゼロ。</p></div>
+      <div class="flow-card"><div class="flow-num">4</div><h4>納品 or 継続BPO</h4><p>AI経理基盤の買取 or 継続BPOを選択。いつでも切替可能。</p></div>
+    </div>
+    <div style="background:var(--gray-bg);border:1px solid var(--gray-line);border-radius:10px;padding:20px 24px">
+      <div style="font-size:13px;font-weight:700;margin-bottom:12px">詳細タイムライン</div>
+      <div style="display:grid;grid-template-columns:80px 1fr 1fr 1fr;gap:0;font-size:11px">
+        <div style="font-weight:700;padding:8px 0;border-bottom:1px solid var(--gray-line)"></div>
+        <div style="font-weight:700;padding:8px;border-bottom:1px solid var(--gray-line);text-align:center;color:var(--accent)">月1</div>
+        <div style="font-weight:700;padding:8px;border-bottom:1px solid var(--gray-line);text-align:center;color:var(--accent)">月2</div>
+        <div style="font-weight:700;padding:8px;border-bottom:1px solid var(--gray-line);text-align:center;color:var(--accent)">月3</div>
+        <div style="padding:8px 0;border-bottom:1px solid var(--gray-line);font-weight:600">Phase 01</div>
+        <div style="padding:8px;border-bottom:1px solid var(--gray-line);background:var(--accent-lt);text-align:center;color:var(--accent);font-weight:500;border-radius:4px 0 0 4px">経理BPO開始</div>
+        <div style="padding:8px;border-bottom:1px solid var(--gray-line);background:var(--accent-lt);text-align:center;color:var(--accent);font-weight:500">経理BPO継続</div>
+        <div style="padding:8px;border-bottom:1px solid var(--gray-line);background:var(--accent-lt);text-align:center;color:var(--accent);font-weight:500;border-radius:0 4px 4px 0">経理BPO完了</div>
+        <div style="padding:8px 0;border-bottom:1px solid var(--gray-line);font-weight:600">Phase 02</div>
+        <div style="padding:8px;border-bottom:1px solid var(--gray-line);background:#e0f2fe;text-align:center;color:#0369a1;font-weight:500;border-radius:4px 0 0 4px">データ分析・学習</div>
+        <div style="padding:8px;border-bottom:1px solid var(--gray-line);background:#e0f2fe;text-align:center;color:#0369a1;font-weight:500">WF構築・最適化</div>
+        <div style="padding:8px;border-bottom:1px solid var(--gray-line);background:#e0f2fe;text-align:center;color:#0369a1;font-weight:500;border-radius:0 4px 4px 0">テスト・調整</div>
+        <div style="padding:8px 0;font-weight:600">Phase 03</div>
+        <div style="padding:8px;color:var(--muted);text-align:center">—</div>
+        <div style="padding:8px;color:var(--muted);text-align:center">—</div>
+        <div style="padding:8px;background:var(--green-lt);text-align:center;color:var(--green);font-weight:600;border-radius:4px">納品・研修</div>
+      </div>
     </div>
   </div>
   <div class="sf"><span class="logo-sm">きづけば<em>AI</em>経理</span><span class="pg">15</span></div>
@@ -753,50 +550,42 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;color:var(--text);backgroun
 
 <!-- ===== SLIDE 16: FAQ ===== -->
 <div class="slide">
-  <span class="tag">FAQ</span>
-  <div class="stitle">よくある質問</div>
-  <div class="faq-grid">
-    <div class="faq-item"><div class="faq-q">Q. 本当に3ヶ月でAI化できるのですか？</div><div class="faq-a">はい。BPO期間中に御社の取引データをAIが学習し、最適なワークフローを構築します。業務量や複雑さによっては延長する場合もありますが、ほとんどのケースで3ヶ月以内に完了しています。</div></div>
-    <div class="faq-item"><div class="faq-q">Q. AI化後、自社で運用できるか不安です</div><div class="faq-a">ワークフローは「誰でも使える」レベルまで最適化してお渡しします。操作マニュアル・社内研修・録画も含まれており、導入後1ヶ月のサポート期間もあります。</div></div>
-    <div class="faq-item"><div class="faq-q">Q. 今の顧問税理士との契約は続けられますか？</div><div class="faq-a">はい。当サービスは「日常の経理実務」に特化。決算・税務申告は顧問税理士が担当し、日々の記帳・請求・月次処理を当サービスが担う分業体制が最適です。</div></div>
-    <div class="faq-item"><div class="faq-q">Q. 今使っている会計ソフトはそのまま使えますか？</div><div class="faq-a">freee・マネーフォワード・弥生会計・勘定奉行など主要な会計ソフトに対応。現在お使いのソフトをそのまま継続利用できます。</div></div>
-    <div class="faq-item"><div class="faq-q">Q. 最低契約期間・違約金はありますか？</div><div class="faq-a">Phase 1（BPO期間）は3ヶ月が基本。Phase 2B（継続BPO）は1ヶ月単位で継続・解約が可能。違約金は一切ありません。</div></div>
-    <div class="faq-item"><div class="faq-q">Q. 振込も勝手にやられてしまいますか？</div><div class="faq-a">いいえ。振込データの作成と支払予定表の送付まではこちらで行いますが、最終承認は必ず貴社の担当者が行います。勝手に実行されることはありません。</div></div>
-    <div class="faq-item"><div class="faq-q">Q. 内製化と継続BPO、どちらがおすすめ？</div><div class="faq-a">経理担当者がいる → 内製化がコスト的に最適。経理専任者がいない → 継続BPOがおすすめ。無料相談で最適なプランをご提案します。</div></div>
-    <div class="faq-item"><div class="faq-q">Q. どんな規模の会社が対象ですか？</div><div class="faq-a">従業員5〜100名程度の中小企業を中心にサービス提供しています。月間取引件数50〜1,000件程度が最も効果を発揮するゾーンです。</div></div>
+  <div class="s-head"><span class="tag">FAQ</span><div class="stitle">よくある質問</div></div>
+  <div class="s-body" style="padding:16px 0 0">
+    <div class="faq-grid">
+      <div class="faq-item"><div class="faq-q">Q. 本当に3ヶ月でAI化できるのですか？</div><div class="faq-a">はい。BPO期間中に御社の取引データをAIが学習し、最適なワークフローを構築します。ほとんどのケースで3ヶ月以内に完了しています。</div></div>
+      <div class="faq-item"><div class="faq-q">Q. AI化後、自社で運用できるか不安です</div><div class="faq-a">ワークフローは「誰でも使える」レベルまで最適化。操作マニュアル・社内研修・録画も含まれ、導入後1ヶ月のサポート付きです。</div></div>
+      <div class="faq-item"><div class="faq-q">Q. 今の顧問税理士との契約は続けられますか？</div><div class="faq-a">はい。当サービスは「日常の経理実務」に特化。決算・税務申告は顧問税理士が担当する分業体制が最適です。</div></div>
+      <div class="faq-item"><div class="faq-q">Q. 今使っている会計ソフトはそのまま使えますか？</div><div class="faq-a">freee・マネーフォワード・弥生会計・勘定奉行など主要な会計ソフトに対応。そのまま継続利用できます。</div></div>
+      <div class="faq-item"><div class="faq-q">Q. 最低契約期間・違約金はありますか？</div><div class="faq-a">Phase 1は3ヶ月が基本。継続BPOは1ヶ月単位で継続・解約が可能。違約金は一切ありません。</div></div>
+      <div class="faq-item"><div class="faq-q">Q. 振込も勝手にやられてしまいますか？</div><div class="faq-a">いいえ。振込データの作成まではこちらで行いますが、最終承認は必ず貴社の担当者が行います。</div></div>
+      <div class="faq-item"><div class="faq-q">Q. 内製化と継続BPO、どちらがおすすめ？</div><div class="faq-a">経理担当者がいる→内製化。経理専任者がいない→継続BPO。無料相談で最適なプランをご提案します。</div></div>
+      <div class="faq-item"><div class="faq-q">Q. どんな規模の会社が対象ですか？</div><div class="faq-a">従業員5〜100名程度の中小企業が中心。月間取引50〜1,000件程度が最も効果を発揮するゾーンです。</div></div>
+    </div>
   </div>
   <div class="sf"><span class="logo-sm">きづけば<em>AI</em>経理</span><span class="pg">16</span></div>
 </div>
 
 <!-- ===== SLIDE 17: SECURITY + CTA ===== -->
-<div class="slide slide-dark" style="display:flex;flex-direction:column;justify-content:flex-start;padding:44px 64px">
-  <span class="tag">SECURITY & CONTACT</span>
-  <div class="stitle" style="font-size:28px;margin-bottom:12px">安全管理体制 & お問い合わせ</div>
-  <div class="sec-grid" style="margin-top:8px">
-    <div class="sec-card" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)"><span class="sec-icon">🔒</span><h4 style="color:var(--white)">SSL/TLS暗号化</h4><p style="color:rgba(255,255,255,.5)">すべてのデータ通信を暗号化。通信傍受による情報漏洩を防止。</p></div>
-    <div class="sec-card" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)"><span class="sec-icon">🛡️</span><h4 style="color:var(--white)">アクセス権限管理</h4><p style="color:rgba(255,255,255,.5)">担当者以外はデータにアクセス不可。厳格な権限管理を実施。</p></div>
-    <div class="sec-card" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)"><span class="sec-icon">🇯🇵</span><h4 style="color:var(--white)">国内サーバー保管</h4><p style="color:rgba(255,255,255,.5)">全データを国内サーバーに保管。海外へのデータ移転なし。</p></div>
-    <div class="sec-card" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)"><span class="sec-icon">📝</span><h4 style="color:var(--white)">NDA締結</h4><p style="color:rgba(255,255,255,.5)">サービス開始前に必ず秘密保持契約を締結。機密情報を保護。</p></div>
-    <div class="sec-card" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)"><span class="sec-icon">✅</span><h4 style="color:var(--white)">承認フロー</h4><p style="color:rgba(255,255,255,.5)">振込の最終承認はお客様が行います。勝手な実行はありません。</p></div>
-    <div class="sec-card" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)"><span class="sec-icon">🔄</span><h4 style="color:var(--white)">データ返却・削除</h4><p style="color:rgba(255,255,255,.5)">終了後はご指示に従い速やかにデータを返却または削除。</p></div>
-  </div>
-  <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:24px 32px;margin-top:16px;text-align:center">
-    <div style="font-family:'Noto Serif JP',serif;font-size:22px;font-weight:700;color:var(--white);margin-bottom:6px">経理を丸投げしたら、気づけばAI化、完了。</div>
-    <div style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:14px">まずは無料相談から。業務範囲・対応可否・概算費用をご案内します。しつこい営業は一切しません。</div>
-    <div style="display:flex;gap:20px;justify-content:center;align-items:center;margin-bottom:10px">
-      <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:12px 28px;text-align:center">
-        <div style="font-size:9px;color:rgba(255,255,255,.35);margin-bottom:2px">メール</div>
-        <div style="font-size:17px;font-weight:700;color:var(--white);font-family:'DM Sans',sans-serif">contact@bewibe.com</div>
-      </div>
+<div class="slide slide-dark">
+  <div class="s-head"><span class="tag">SECURITY & CONTACT</span><div class="stitle" style="font-size:26px">安全管理体制 & お問い合わせ</div></div>
+  <div class="s-body spread" style="padding:12px 0 0;gap:14px">
+    <div class="sec-grid">
+      <div class="sec-card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)"><span class="sec-icon">🔒</span><h4 style="color:var(--white)">SSL/TLS暗号化</h4><p style="color:rgba(255,255,255,.45)">すべてのデータ通信を暗号化。通信傍受を防止。</p></div>
+      <div class="sec-card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)"><span class="sec-icon">🛡️</span><h4 style="color:var(--white)">アクセス権限管理</h4><p style="color:rgba(255,255,255,.45)">担当者以外はデータにアクセス不可。</p></div>
+      <div class="sec-card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)"><span class="sec-icon">🇯🇵</span><h4 style="color:var(--white)">国内サーバー保管</h4><p style="color:rgba(255,255,255,.45)">全データを国内サーバーに保管。</p></div>
+      <div class="sec-card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)"><span class="sec-icon">📝</span><h4 style="color:var(--white)">NDA締結</h4><p style="color:rgba(255,255,255,.45)">サービス開始前に秘密保持契約を締結。</p></div>
+      <div class="sec-card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)"><span class="sec-icon">✅</span><h4 style="color:var(--white)">承認フロー</h4><p style="color:rgba(255,255,255,.45)">振込の最終承認はお客様が行います。</p></div>
+      <div class="sec-card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)"><span class="sec-icon">🔄</span><h4 style="color:var(--white)">データ返却・削除</h4><p style="color:rgba(255,255,255,.45)">終了後はご指示に従いデータ返却/削除。</p></div>
     </div>
-    <div style="display:flex;gap:16px;justify-content:center;font-size:11px;color:rgba(255,255,255,.35)">
-      <span>✓ 初期費用なし</span><span>✓ 3ヶ月でAI化</span><span>✓ 違約金なし</span><span>✓ NDA締結</span><span>✓ しつこい営業なし</span>
+    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:28px 36px;text-align:center">
+      <div style="font-family:'Noto Serif JP',serif;font-size:24px;font-weight:700;color:var(--white);margin-bottom:8px">経理を丸投げしたら、気づけばAI化、完了。</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.45);margin-bottom:16px">まずは無料相談から。業務範囲・対応可否・概算費用をご案内します。しつこい営業は一切しません。</div>
+      <div style="display:inline-block;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:14px 32px;margin-bottom:12px"><div style="font-size:9px;color:rgba(255,255,255,.3);margin-bottom:2px">メール</div><div style="font-size:18px;font-weight:700;color:var(--white);font-family:'DM Sans',sans-serif">contact@bewibe.com</div></div>
+      <div style="display:flex;gap:18px;justify-content:center;font-size:11px;color:rgba(255,255,255,.3)"><span>✓ 初期費用なし</span><span>✓ 3ヶ月でAI化</span><span>✓ 違約金なし</span><span>✓ NDA締結</span><span>✓ しつこい営業なし</span></div>
     </div>
   </div>
-  <div style="position:absolute;bottom:18px;left:64px;right:64px;display:flex;justify-content:space-between;align-items:center">
-    <div style="font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;color:var(--white)">きづけば<span style="color:var(--gold)">AI</span>経理</div>
-    <div style="font-size:10px;color:rgba(255,255,255,.25)">株式会社BEWIBE — contact@bewibe.com</div>
-  </div>
+  <div class="sf"><span class="logo-sm" style="color:var(--accent-hi)">きづけば<em>AI</em>経理</span><span class="pg" style="font-size:10px;color:rgba(255,255,255,.25)">株式会社BEWIBE — contact@bewibe.com</span></div>
 </div>
 
 </body>
