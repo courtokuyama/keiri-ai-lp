@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>きづけばAI経理 – 気がつけば、AI導入まで終わっていた。</title>
+<title>気づけばAI経理 – 気がつけば、AI導入まで終わっていた。</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <script async src="https://tally.so/widgets/embed.js"></script>
 <style>
@@ -76,6 +76,7 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.35)}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
 .hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(28px,3.6vw,46px);color:var(--white);font-weight:700;line-height:1.3;margin-bottom:20px;letter-spacing:-.02em}
 .sp-only{display:none}
+.pc-only{display:inline}
 .hero-lead{font-size:clamp(13px,1.3vw,15px);color:rgba(255,255,255,.72);max-width:520px;line-height:1.85;margin-bottom:36px;font-weight:400;letter-spacing:.02em}
 .hero-lead .hl-kw{color:var(--accent-hi);font-weight:500}
 .hero-cta-zone{display:flex;flex-direction:column;gap:14px}
@@ -334,29 +335,76 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
 }
 @media(max-width:720px){
   .sp-only{display:block}
+  .pc-only{display:none}
   .stats{display:none}
   .stat:nth-child(2){border-right:none}
   .stat:nth-child(3){border-top:1px solid var(--gray-line)}
   .price-grid,.svc-layout{grid-template-columns:1fr}
   .feat-grid{grid-template-columns:1fr}
-  .feat-card{border-right:none;border-bottom:1px solid var(--gray-line)}
+  .feat-card{border-right:none;border-bottom:1px solid var(--gray-line);padding:28px 22px}
   .feat-card:last-child{border-bottom:none}
   .feat-card.feat-full{grid-template-columns:1fr;grid-column:1}
   .svc-grid{grid-template-columns:1fr}
-  .svc-card{border-right:none;border-bottom:1px solid var(--gray-line)}
+  .svc-card{border-right:none;border-bottom:1px solid var(--gray-line);padding:28px 22px}
   .svc-card:last-child{border-bottom:none}
-  .svc-benefits{padding:40px 24px}
-  .svc-benefits-grid{grid-template-columns:1fr}
+  .svc-benefits{padding:36px 22px;margin-top:40px}
+  .svc-benefits-grid{grid-template-columns:1fr;gap:14px}
+  .svc-benefit{padding:22px 18px}
+  .svc-benefit-icon{font-size:30px;margin-bottom:10px}
+  .svc-benefit h4{font-size:16px;margin-bottom:8px}
+  .svc-benefit p{font-size:13px;line-height:1.7}
+  .svc-benefits-title{font-size:22px}
+  .svc-benefits-sub{font-size:13px;margin-bottom:28px}
   .feat-card-img{height:120px}
   .how-flow{grid-template-columns:repeat(2,1fr);gap:24px}
   .how-flow::before{display:none}
-  .mid-cta{flex-direction:column}
+  .mid-cta{flex-direction:column;padding:28px 24px;gap:18px}
   .mid-cta-btns{width:100%}
+  .mid-cta-text h3{font-size:18px}
+  .mid-cta-text p{font-size:12px}
   .float-cta-text{display:none}
   .final .wrap{grid-template-columns:1fr}
   .final-form{height:420px}
   .final-form iframe{height:500px;top:-70px}
   :root{--nav-h:56px}
+
+  /* — Mobile typography (pricing 寄り) — */
+  section{padding:64px 0}
+  .sec-title{font-size:24px;line-height:1.45;margin-bottom:10px}
+  .sec-lead{font-size:14px;line-height:1.85;margin-bottom:36px}
+  .feat-num{font-size:32px;margin-bottom:10px}
+  .feat-kw{font-size:18px;margin-bottom:6px}
+  .feat-card h3,.svc-card h3{font-size:14px;margin-bottom:14px;line-height:1.55}
+  .feat-checks li,.plan-list li{font-size:13px}
+  .prob-card{padding:18px 18px}
+  .prob-card h3{font-size:15px}
+  .prob-card p{font-size:13px}
+  .plan{padding:28px 22px}
+  .plan-price{font-size:30px}
+  .faq-q{font-size:13px;padding:18px 20px}
+  .faq-a{font-size:13px;padding:0 20px}
+  .faq-item.open .faq-a{padding:14px 20px;max-height:400px}
+
+  /* — Hero (タイトルを最大の主役に) — */
+  .hero{min-height:auto;padding:calc(var(--nav-h) + 36px) 0 56px}
+  .hero h1{font-size:44px;line-height:1.32;margin-bottom:22px;letter-spacing:-.01em}
+  .hero-lead{font-size:13px;line-height:1.85;margin-bottom:26px;color:rgba(255,255,255,.75)}
+  .hero-badge{font-size:10px;padding:4px 12px;margin-bottom:18px}
+  .hero-btns{gap:10px}
+  .btn-main,.btn-ghost{padding:12px 24px;font-size:14px}
+  .hero-sp-highlights{margin-top:22px;gap:8px}
+  .hero-sp-hl{padding:11px 14px}
+  .hero-sp-hl strong{font-size:14px;margin-bottom:1px}
+  .hero-sp-hl span{font-size:10px}
+
+  /* — Final CTA — */
+  .final{padding:64px 0 56px}
+  .final h2{font-size:24px;line-height:1.5;margin-bottom:14px}
+  .final-lead{font-size:14px}
+  .final-highlights{gap:14px;margin-top:24px}
+  .final-hl{width:120px;height:120px}
+  .final-hl strong{font-size:15px}
+  .final-hl span{font-size:10px}
 }
 </style>
 </head>
@@ -365,7 +413,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
 <!-- NAV -->
 <nav id="top-nav">
   <div class="nav-inner">
-    <a href="#hero" class="logo" style="text-decoration:none">きづけば<span>AI</span>経理</a>
+    <a href="#hero" class="logo" style="text-decoration:none">気づけば<span>AI</span>経理</a>
     <div class="nav-links">
       <a href="#problems">課題</a>
       <a href="#service">サービス</a>
@@ -394,7 +442,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
 <div class="float-cta" id="floatCta">
   <div class="float-cta-inner">
     <div class="float-cta-text">
-      <strong>きづけばAI経理 — 丸投げから、AI化へ。</strong>
+      <strong>気づけばAI経理 — 丸投げから、AI化へ。</strong>
       初期費用なし・3ヶ月でAI導入完了
     </div>
     <div class="float-cta-btns">
@@ -411,7 +459,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
     <div class="hero-text">
       <div class="hero-badge">経理BPO × AI導入 ── 中小企業特化</div>
       <h1>気がつけば、<br>AI導入まで<br class="sp-only">終わっていた。</h1>
-      <p class="hero-lead">経理を丸投げしている<span class="hl-kw">3ヶ月</span>の間に、<br>裏側で<span class="hl-kw">AIワークフロー</span>を構築。<br>預けたのは経理。戻ってきたのは、<span class="hl-kw">AI経理基盤</span>。</p>
+      <p class="hero-lead">経理を丸投げしている<span class="hl-kw">3ヶ月</span>の間に、<br class="pc-only">裏側で<span class="hl-kw">AIワークフロー</span>を構築。<br class="pc-only">預けたのは経理。戻ってきたのは、<span class="hl-kw">AI経理基盤</span>。</p>
       <div class="hero-cta-zone">
         <div class="hero-btns">
           <a href="#contact" class="btn-main" style="text-decoration:none">資料請求 →</a>
@@ -612,7 +660,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
   <div class="sec">
     <span class="tag fi">COMPARISON</span>
     <h2 class="sec-title fi">他の選択肢との違い</h2>
-    <p class="sec-lead fi">BPO、派遣、AI導入支援…それぞれの限界と、きづけばAI経理の位置づけ。</p>
+    <p class="sec-lead fi">BPO、派遣、AI導入支援…それぞれの限界と、気づけばAI経理の位置づけ。</p>
     <div class="cmp-wrap fi">
       <table class="cmp-table">
         <thead>
@@ -621,7 +669,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
             <th class="th-other">通常のBPO</th>
             <th class="th-other">経理派遣</th>
             <th class="th-other">AI導入コンサル</th>
-            <th class="th-ours">きづけばAI経理</th>
+            <th class="th-ours">気づけばAI経理</th>
           </tr>
         </thead>
         <tbody>
@@ -671,7 +719,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
   <div class="sec">
     <span class="tag fi">HOW IT WORKS</span>
     <h2 class="sec-title fi">送るだけ、あとはお任せ</h2>
-    <p class="sec-lead fi">御社がやることは、書類を送るだけ。残りの全工程はきづけばAI経理が担います。</p>
+    <p class="sec-lead fi">御社がやることは、書類を送るだけ。残りの全工程は気づけばAI経理が担います。</p>
     <div class="feat-grid fi">
       <div class="feat-card">
         <img class="feat-card-img" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=400&h=240&q=80" alt="書類を送る">
@@ -714,7 +762,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
 <section class="feat-bg">
   <div class="sec">
     <span class="tag fi">WHY US</span>
-    <h2 class="sec-title fi">きづけばAI経理が選ばれる理由</h2>
+    <h2 class="sec-title fi">気づけばAI経理が選ばれる理由</h2>
     <p class="sec-lead fi"></p>
     <div class="feat-grid fi">
       <div class="feat-card">
@@ -732,7 +780,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
         <div class="feat-kw">コスト↓</div>
         <h3>時間が経つほどコストが下がる</h3>
         <ul class="feat-checks">
-          <li>通常BPOは毎月同じコスト。きづけばAI経理は3ヶ月後に半減</li>
+          <li>通常BPOは毎月同じコスト。気づけばAI経理は3ヶ月後に半減</li>
           <li>AI化で人的工数が激減するから実現できる</li>
           <li>内製化すればBPOコスト自体がゼロに</li>
         </ul>
@@ -829,7 +877,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
 <section class="final" id="contact">
   <div class="wrap">
     <div class="final-left">
-      <h2>経理を丸投げしたら、<br>気づけばAI化、完了。</h2>
+      <h2>経理を丸投げしたら、<br class="pc-only">気づけばAI化、完了。</h2>
       <p class="final-lead">30秒で完了するフォームにご記入ください。<br>業務範囲・対応可否・概算費用をご案内します。</p>
       <div class="final-micro">
         <span>初期費用なし</span>
@@ -843,7 +891,7 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
       </div>
     </div>
     <div class="final-form">
-      <iframe data-tally-src="https://tally.so/r/q4PoP8?transparentBackground=1&hideTitle=1" width="100%" height="480" frameborder="0" marginheight="0" marginwidth="0" title="きづけばAI経理 資料請求フォーム"></iframe>
+      <iframe data-tally-src="https://tally.so/r/q4PoP8?transparentBackground=1&hideTitle=1" width="100%" height="480" frameborder="0" marginheight="0" marginwidth="0" title="気づけばAI経理 資料請求フォーム"></iframe>
     </div>
   </div>
 </section>
