@@ -88,14 +88,21 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.35)}
 .hero-micro{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 .micro-item{display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.03em}
 .micro-item::before{content:'✓';color:var(--accent-hi);font-size:10px;font-weight:700}
-/* ヒーローハイライト（丸枠バッジ・斜め配置） */
-.hero-highlights{display:flex;flex-direction:column;gap:0;align-items:center;position:relative;width:240px;height:340px}
-.hero-hl{width:180px;height:180px;border-radius:50%;border:2px solid rgba(255,255,255,.25);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;transition:border-color .3s,transform .3s;position:absolute}
-.hero-hl:first-child{top:0;left:-30px}
-.hero-hl:last-child{bottom:0;right:-30px}
-.hero-hl:hover{border-color:rgba(255,255,255,.5);transform:scale(1.04)}
-.hero-hl strong{font-family:'Noto Serif JP',serif;font-size:20px;font-weight:700;color:var(--white);line-height:1.2}
+/* ヒーローハイライト（丸枠バッジ・斜め配置 + ホバー詳細） */
+.hero-highlights{display:flex;flex-direction:column;gap:0;align-items:center;position:relative;width:280px;height:420px}
+.hero-hl{width:190px;height:190px;border-radius:50%;border:2px solid rgba(255,255,255,.25);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;transition:all .4s cubic-bezier(.22,1,.36,1);position:absolute;cursor:pointer;background:rgba(255,255,255,.03)}
+.hero-hl:first-child{top:0;left:-30px;animation:hlFloat1 6s ease-in-out infinite}
+.hero-hl:nth-child(2){top:140px;right:-30px;animation:hlFloat2 7s ease-in-out infinite}
+.hero-hl:last-child{bottom:0;left:10px;animation:hlFloat3 8s ease-in-out infinite}
+.hero-hl:hover{border-color:var(--accent-hi);transform:scale(1.1);background:rgba(36,113,212,.15);box-shadow:0 0 40px rgba(36,113,212,.25)}
+.hero-hl strong{font-family:'Noto Serif JP',serif;font-size:20px;font-weight:700;color:var(--white);line-height:1.2;transition:transform .3s}
+.hero-hl:hover strong{transform:scale(1.05)}
 .hero-hl span{font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.03em;line-height:1.4}
+.hero-hl-detail{position:absolute;bottom:-48px;left:50%;transform:translateX(-50%) translateY(8px);background:var(--navy-2);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:8px 16px;font-size:12px;color:rgba(255,255,255,.7);white-space:nowrap;opacity:0;pointer-events:none;transition:all .3s ease;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.hero-hl:hover .hero-hl-detail{opacity:1;transform:translateX(-50%) translateY(0)}
+@keyframes hlFloat1{0%,100%{transform:translate(0,0)}50%{transform:translate(8px,-10px)}}
+@keyframes hlFloat2{0%,100%{transform:translate(0,0)}50%{transform:translate(-6px,8px)}}
+@keyframes hlFloat3{0%,100%{transform:translate(0,0)}50%{transform:translate(10px,-6px)}}
 /* スマホ用ハイライトバー */
 .hero-sp-highlights{display:none;flex-direction:column;gap:10px;margin-top:28px}
 .hero-sp-hl{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:14px 20px;text-align:center}
@@ -122,7 +129,8 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.35)}
 .stats{background:var(--white);padding:64px 0}
 .stats-inner{max-width:var(--max-w);margin:0 auto;padding:0 5%}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--gray-line);border-radius:8px;overflow:hidden}
-.stat{padding:28px 16px;text-align:center;border-right:1px solid var(--gray-line);position:relative}
+.stat{padding:28px 16px;text-align:center;border-right:1px solid var(--gray-line);position:relative;transition:background .2s}
+.stat:hover{background:var(--accent-lt)}
 .stat:last-child{border-right:none}
 .stat-n{font-family:'Noto Serif JP',serif;font-size:38px;color:var(--navy);font-weight:700;line-height:1;margin-bottom:8px;display:block}
 .stat-n em{font-style:normal;font-size:20px;color:var(--accent)}
@@ -154,6 +162,13 @@ section{padding:96px 0}
 .prob-icon-wrap svg{width:18px;height:18px}
 .prob-card h3{font-size:18px;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.4}
 .prob-card p{font-size:14px;color:var(--muted);line-height:1.65}
+
+.prob-answer{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s ease;background:var(--accent-lt);border-radius:8px;font-size:14px;color:var(--text);line-height:1.8;padding:0 16px;margin-top:0}
+.prob-card.open .prob-answer{max-height:200px;padding:14px 16px;margin-top:12px}
+.prob-hint{font-size:12px;color:var(--muted);margin-top:8px;transition:opacity .2s}
+.prob-card.open .prob-hint{opacity:0;height:0;margin:0;overflow:hidden}
+.prob-cta{font-size:13px;font-weight:700;color:var(--accent);margin-top:8px;display:inline-block}
+.prob-cta:hover{text-decoration:underline}
 
 /* ══════════════════════════════
    SERVICE VISUAL — 左イラスト右リスト
@@ -241,8 +256,8 @@ section{padding:96px 0}
 .svc-benefits-title{font-family:'Noto Serif JP',serif;font-size:28px;font-weight:700;color:var(--white);margin-bottom:6px;text-align:center;position:relative;z-index:1}
 .svc-benefits-sub{font-size:15px;color:rgba(255,255,255,.55);text-align:center;margin-bottom:40px;position:relative;z-index:1}
 .svc-benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;z-index:1}
-.svc-benefit{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:32px 28px;text-align:center;transition:background .2s}
-.svc-benefit:hover{background:rgba(255,255,255,.1)}
+.svc-benefit{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:32px 28px;text-align:center;transition:all .3s ease}
+.svc-benefit:hover{background:rgba(255,255,255,.1);transform:translateY(-4px)}
 .svc-benefit-icon{font-size:36px;margin-bottom:14px;display:block}
 .svc-benefit h4{font-family:'Noto Serif JP',serif;font-size:19px;font-weight:700;color:var(--white);margin-bottom:10px}
 .svc-benefit p{font-size:14px;color:rgba(255,255,255,.6);line-height:1.7}
@@ -481,10 +496,17 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
       <div class="hero-hl">
         <strong>月額<br>¥98,000〜</strong>
         <span>業務量に応じて</span>
+        <div class="hero-hl-detail">経理正社員の1/4以下のコスト</div>
       </div>
       <div class="hero-hl">
         <strong>3ヶ月で<br>AI導入完了</strong>
         <span>裏側で自動構築</span>
+        <div class="hero-hl-detail">BPO中にAIが学習 → 納品</div>
+      </div>
+      <div class="hero-hl">
+        <strong>AI化後<br>コスト半減</strong>
+        <span>内製化も可能</span>
+        <div class="hero-hl-detail">¥49,800〜/月 or 買い取りでゼロ</div>
       </div>
     </div>
   </div>
@@ -536,35 +558,40 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
       </div>
       <!-- カード群 -->
       <div class="prob-cards">
-        <div class="prob-card fi active" data-prob="0">
+        <div class="prob-card fi active" data-prob="0" onclick="this.classList.toggle('open')">
           <div class="prob-icon-wrap">
             <svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7.5" stroke="#2471d4" stroke-width="1.5"/><path d="M9 5v4l2.5 2.5" stroke="#2471d4" stroke-width="1.5" stroke-linecap="round"/></svg>
           </div>
           <div><h3>社長・役員が月末に経理作業をしている</h3><p>本業に集中したいのに、伝票整理と仕訳入力で時間が消える。</p></div>
+          <div class="prob-hint">▼ クリックで解決策を表示</div><div class="prob-answer">気づけばAI経理なら、経理業務をまるごと丸投げ。3ヶ月後にはAIが仕訳・請求を自動処理する基盤が完成し、社長は本業に集中できます。<br><a href="#contact" class="prob-cta">詳しく見る →</a></div>
         </div>
-        <div class="prob-card fi" data-prob="1">
+        <div class="prob-card fi" data-prob="1" onclick="this.classList.toggle('open')">
           <div class="prob-icon-wrap">
             <svg viewBox="0 0 18 18" fill="none"><path d="M9 2a4 4 0 100 8A4 4 0 009 2z" stroke="#2471d4" stroke-width="1.5"/><path d="M2 16c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke="#2471d4" stroke-width="1.5" stroke-linecap="round"/></svg>
           </div>
           <div><h3>担当者が1人で属人化。退職リスクが怖い</h3><p>ノウハウが個人に蓄積され、辞めると経理が止まる。</p></div>
+          <div class="prob-hint">▼ クリックで解決策を表示</div><div class="prob-answer">AIワークフローとマニュアルが納品されるため、特定の担当者に依存しない体制が構築できます。退職リスクに怯える必要がなくなります。<br><a href="#contact" class="prob-cta">詳しく見る →</a></div>
         </div>
-        <div class="prob-card fi" data-prob="2">
+        <div class="prob-card fi" data-prob="2" onclick="this.classList.toggle('open')">
           <div class="prob-icon-wrap">
             <svg viewBox="0 0 18 18" fill="none"><path d="M9 2v7l4 2" stroke="#2471d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="9" r="7.5" stroke="#2471d4" stroke-width="1.5"/></svg>
           </div>
           <div><h3>BPOに出しても、毎月コストが続くだけ</h3><p>業務を外注し続けるだけで、社内に何も残らない。</p></div>
+          <div class="prob-hint">▼ クリックで解決策を表示</div><div class="prob-answer">通常のBPOとの最大の違いは「3ヶ月後にコストが半減する」こと。AI化が完了すれば、月額コストは約半額に。内製化すればBPO費用はゼロになります。<br><a href="#contact" class="prob-cta">詳しく見る →</a></div>
         </div>
-        <div class="prob-card fi" data-prob="3">
+        <div class="prob-card fi" data-prob="3" onclick="this.classList.toggle('open')">
           <div class="prob-icon-wrap">
             <svg viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="11" rx="2" stroke="#2471d4" stroke-width="1.5"/><path d="M6 4V3a1 1 0 011-1h4a1 1 0 011 1v1" stroke="#2471d4" stroke-width="1.5"/><path d="M6 9h6M6 12h4" stroke="#2471d4" stroke-width="1.5" stroke-linecap="round"/></svg>
           </div>
           <div><h3>AIツールを自分で導入する余裕がない</h3><p>調査・選定・導入・運用まで、とても手が回らない。</p></div>
+          <div class="prob-hint">▼ クリックで解決策を表示</div><div class="prob-answer">お客様がやることは「経理を丸投げする」だけ。AIの選定・導入・設定はすべてこちらで行います。経理を預けている間に、裏側でAI基盤が完成しています。<br><a href="#contact" class="prob-cta">詳しく見る →</a></div>
         </div>
-        <div class="prob-card fi" data-prob="4">
+        <div class="prob-card fi" data-prob="4" onclick="this.classList.toggle('open')">
           <div class="prob-icon-wrap">
             <svg viewBox="0 0 18 18" fill="none"><path d="M3 9h12M9 3l6 6-6 6" stroke="#2471d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <div><h3>税理士はいるが日常の経理は丸投げできない</h3><p>顧問税理士は決算担当。日々の記帳は結局自社でやっている。</p></div>
+          <div class="prob-hint">▼ クリックで解決策を表示</div><div class="prob-answer">顧問税理士はそのまま。日々の記帳・仕訳・請求書処理を当サービスが担い、決算・税務申告は税理士が担当する分業体制が理想です。freee・マネフォ連携も対応。<br><a href="#contact" class="prob-cta">詳しく見る →</a></div>
         </div>
       </div>
     </div>
@@ -973,6 +1000,30 @@ probCards.forEach(card=>{
     if(img)img.classList.add('active');
   });
 });
+/* Count-up animation for stats */
+var statObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      var el = e.target;
+      var text = el.textContent;
+      var num = parseFloat(text);
+      if(isNaN(num)) return;
+      var suffix = text.replace(/[\d.]/g,'');
+      var duration = 1200;
+      var start = performance.now();
+      function step(now){
+        var progress = Math.min((now - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        var current = Math.round(num * eased);
+        el.childNodes[0].textContent = current;
+        if(progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      statObserver.unobserve(el);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('.stat-n').forEach(function(el){statObserver.observe(el)});
 </script>
 </body>
 </html>
