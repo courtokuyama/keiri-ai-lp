@@ -308,8 +308,8 @@ section{padding:96px 0}
 .final-micro{display:flex;flex-direction:column;gap:10px}
 .final-micro span{font-size:13px;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:8px}
 .final-micro span::before{content:'✓';color:var(--accent-hi);font-weight:700}
-.final-form{background:var(--white);border-radius:12px;overflow:hidden;height:480px;position:relative}
-.final-form iframe{width:100%;height:560px;border:0;position:absolute;top:-70px;left:0}
+.final-form{background:var(--white);border-radius:12px;overflow:hidden;height:620px;position:relative}
+.final-form iframe{width:100%;height:700px;border:0;position:absolute;top:-70px;left:0}
 footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:28px 5%;font-size:11px;letter-spacing:.06em;line-height:2.2}
 
 /* ══════════════════════════════
@@ -364,8 +364,8 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
   .mid-cta-text p{font-size:12px}
   .float-cta-text{display:none}
   .final .wrap{grid-template-columns:1fr}
-  .final-form{height:420px}
-  .final-form iframe{height:500px;top:-70px}
+  .final-form{height:560px}
+  .final-form iframe{height:640px;top:-70px}
   :root{--nav-h:56px}
 
   /* — Mobile typography (pricing 寄り) — */
@@ -879,15 +879,24 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
     <div class="final-left">
       <h2>経理を丸投げしたら、<br class="pc-only">気づけばAI化、完了。</h2>
       <p class="final-lead">30秒で完了するフォームにご記入ください。<br>業務範囲・対応可否・概算費用をご案内します。</p>
+      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:24px 28px;margin-bottom:24px">
+        <div style="font-size:14px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:14px;display:flex;align-items:center;gap:8px">
+          <span style="font-size:18px">📄</span> 資料でわかること
+        </div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px">
+          <li style="font-size:13px;color:rgba(255,255,255,.6);display:flex;align-items:flex-start;gap:8px;line-height:1.6"><span style="color:rgba(255,255,255,.35)">●</span>BPO期間中にAIが自動構築される仕組みの全体像</li>
+          <li style="font-size:13px;color:rgba(255,255,255,.6);display:flex;align-items:flex-start;gap:8px;line-height:1.6"><span style="color:rgba(255,255,255,.35)">●</span>freee・マネーフォワード・弥生との連携方法</li>
+          <li style="font-size:13px;color:rgba(255,255,255,.6);display:flex;align-items:flex-start;gap:8px;line-height:1.6"><span style="color:rgba(255,255,255,.35)">●</span>導入企業の具体的なコスト削減事例（数値付き）</li>
+          <li style="font-size:13px;color:rgba(255,255,255,.6);display:flex;align-items:flex-start;gap:8px;line-height:1.6"><span style="color:rgba(255,255,255,.35)">●</span>3ヶ月の導入スケジュールと各フェーズの詳細</li>
+          <li style="font-size:13px;color:rgba(255,255,255,.6);display:flex;align-items:flex-start;gap:8px;line-height:1.6"><span style="color:rgba(255,255,255,.35)">●</span>料金プランの詳細比較と費用シミュレーション</li>
+          <li style="font-size:13px;color:rgba(255,255,255,.6);display:flex;align-items:flex-start;gap:8px;line-height:1.6"><span style="color:rgba(255,255,255,.35)">●</span>セキュリティ体制・NDA対応・データ保護の詳細</li>
+        </ul>
+      </div>
       <div class="final-micro">
         <span>初期費用なし</span>
         <span>3ヶ月でAI導入完了</span>
         <span>違約金なし</span>
         <span>しつこい営業は一切しません</span>
-      </div>
-      <div class="final-highlights">
-        <div class="final-hl"><strong>月額<br>¥98,000〜</strong><span>業務量に応じて</span></div>
-        <div class="final-hl"><strong>3ヶ月で<br>AI化</strong><span>裏側で自動構築</span></div>
       </div>
     </div>
     <div class="final-form">
