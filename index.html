@@ -136,8 +136,9 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.35)}
 .stat-n{font-family:'Noto Serif JP',serif;font-size:42px;color:var(--navy);font-weight:700;line-height:1;display:block}
 .stat-n em{font-style:normal;font-size:20px;color:var(--accent)}
 .stat-badge{font-size:9px;font-weight:700;color:var(--accent);background:var(--accent-lt);padding:2px 8px;border-radius:4px;white-space:nowrap;letter-spacing:.04em}
-.stat-l{font-size:13px;color:var(--sub);font-weight:700;margin-bottom:14px;white-space:nowrap;letter-spacing:.04em}
+.stat-l{font-size:13px;color:var(--sub);font-weight:700;margin-bottom:14px;line-height:1.4;letter-spacing:.04em}
 .stat-chart{height:72px;margin-bottom:10px}
+.stat-chart svg{display:block}
 .stat-desc{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:6px;flex:1}
 .stat-src{font-size:9px;color:var(--muted);opacity:.7;letter-spacing:.02em;text-transform:uppercase}
 
@@ -528,13 +529,15 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
       <span class="stat-l">中小企業の経営者が経理を兼任</span>
       <div class="stat-chart">
         <svg width="100%" height="72" viewBox="0 0 140 72" fill="none">
-          <rect x="0" y="0" width="109" height="72" rx="6" fill="#2471d4" opacity="0.15"/>
-          <rect x="0" y="0" width="109" height="72" rx="6" fill="url(#kg1)" opacity="0.3"/>
-          <rect x="109" y="0" width="31" height="72" rx="0 6 6 0" fill="#dde2ea" opacity="0.5"/>
-          <defs><linearGradient id="kg1" x1="0" y1="0" x2="109" y2="0"><stop stop-color="#2471d4" stop-opacity="0.1"/><stop offset="1" stop-color="#2471d4" stop-opacity="0.4"/></linearGradient></defs>
-        </svg>
+            <rect x="0" y="8" width="109" height="56" rx="6" fill="#2471d4" opacity="0.12"/>
+            <rect x="0" y="8" width="109" height="56" rx="6" fill="url(#kg1)" opacity="0.25"/>
+            <rect x="109" y="8" width="31" height="56" fill="#dde2ea" opacity="0.35"/>
+            <text x="100" y="6" font-size="10" fill="#2471d4" opacity="0.5" font-weight="600">78</text>
+            <text x="118" y="6" font-size="10" fill="#94a3b8" opacity="0.4">22</text>
+            <defs><linearGradient id="kg1" x1="0" y1="0" x2="109" y2="0"><stop stop-color="#2471d4" stop-opacity="0.05"/><stop offset="1" stop-color="#2471d4" stop-opacity="0.35"/></linearGradient></defs>
+          </svg>
       </div>
-      <span class="stat-desc">経理専任がいない中小企業では、社長が月末に仕訳を入力している。</span>
+      <span class="stat-desc">経理専任がいない中小企業では、<br>社長が月末に仕訳を入力している</span>
       <span class="stat-src">SRC: 日本商工会議所 2024年調査</span>
     </div>
     <div class="stat fi">
@@ -545,14 +548,15 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
       <span class="stat-l">経理正社員1名の年間人件費</span>
       <div class="stat-chart">
         <svg width="100%" height="72" viewBox="0 0 140 72" fill="none">
-          <rect x="8" y="6" width="18" height="66" rx="4" fill="#2471d4" opacity="0.12"/>
-          <rect x="34" y="18" width="18" height="54" rx="4" fill="#2471d4" opacity="0.2"/>
-          <rect x="60" y="28" width="18" height="44" rx="4" fill="#2471d4" opacity="0.35"/>
-          <rect x="86" y="14" width="18" height="58" rx="4" fill="#2471d4" opacity="0.55"/>
-          <rect x="112" y="2" width="18" height="70" rx="4" fill="#2471d4" opacity="0.85"/>
-        </svg>
+            <rect x="8" y="8" width="18" height="64" rx="4" fill="#2471d4" opacity="0.1"/>
+            <rect x="34" y="20" width="18" height="52" rx="4" fill="#2471d4" opacity="0.18"/>
+            <rect x="60" y="30" width="18" height="42" rx="4" fill="#2471d4" opacity="0.3"/>
+            <rect x="86" y="16" width="18" height="56" rx="4" fill="#2471d4" opacity="0.5"/>
+            <rect x="112" y="2" width="18" height="70" rx="4" fill="#2471d4" opacity="0.8"/>
+            <text x="112" y="72" font-size="8" fill="#2471d4" opacity="0.4" font-weight="600">480万</text>
+          </svg>
       </div>
-      <span class="stat-desc">給与・社保・福利厚生込みの実コスト。BPO+AI化で1/4以下に。</span>
+      <span class="stat-desc">給与・社保・福利厚生込みの実コスト。<br>BPO+AI化で1/4以下に</span>
       <span class="stat-src">&nbsp;</span>
     </div>
     <div class="stat fi">
@@ -563,12 +567,15 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
       <span class="stat-l">BPO+AI化による平均コスト削減率</span>
       <div class="stat-chart">
         <svg width="100%" height="72" viewBox="0 0 140 72" fill="none">
-          <polyline points="0,64 28,58 56,46 84,32 112,16 140,6" stroke="#2471d4" stroke-width="3" fill="none" stroke-linecap="round"/>
-          <polygon points="0,64 28,58 56,46 84,32 112,16 140,6 140,72 0,72" fill="#2471d4" opacity="0.08"/>
-          <circle cx="140" cy="6" r="5" fill="#2471d4"/>
-        </svg>
+            <polygon points="0,64 28,58 56,46 84,32 112,16 140,6 140,72 0,72" fill="#2471d4" opacity="0.06"/>
+            <polyline points="0,64 28,58 56,46 84,32 112,16 140,6" stroke="#2471d4" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <circle cx="0" cy="64" r="3" fill="#2471d4" opacity="0.3"/>
+            <circle cx="140" cy="6" r="4.5" fill="#2471d4"/>
+            <text x="2" y="58" font-size="9" fill="#94a3b8" opacity="0.5">Before</text>
+            <text x="112" y="22" font-size="9" fill="#2471d4" opacity="0.45">After</text>
+          </svg>
       </div>
-      <span class="stat-desc">AI化完了後、月額コストが半減。内製化でBPO費用ゼロも可能。</span>
+      <span class="stat-desc">AI化完了後、月額コストが半減。<br>内製化でBPO費用ゼロも可能</span>
       <span class="stat-src">&nbsp;</span>
     </div>
     <div class="stat fi">
@@ -579,15 +586,18 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
       <span class="stat-l">AI経理基盤の構築期間</span>
       <div class="stat-chart">
         <svg width="100%" height="72" viewBox="0 0 140 72" fill="none">
-          <rect x="0" y="14" width="42" height="18" rx="9" fill="#2471d4" opacity="0.2"/>
-          <rect x="48" y="14" width="42" height="18" rx="9" fill="#2471d4" opacity="0.5"/>
-          <rect x="96" y="14" width="42" height="18" rx="9" fill="#2471d4"/>
-          <text x="10" y="52" font-size="11" fill="#718096" font-weight="600">BPO</text>
-          <text x="56" y="52" font-size="11" fill="#718096" font-weight="600">AI構築</text>
-          <text x="104" y="52" font-size="11" fill="#2471d4" font-weight="700">納品</text>
-        </svg>
+            <rect x="0" y="12" width="42" height="20" rx="10" fill="#2471d4" opacity="0.18"/>
+            <rect x="48" y="12" width="42" height="20" rx="10" fill="#2471d4" opacity="0.45"/>
+            <rect x="96" y="12" width="42" height="20" rx="10" fill="#2471d4"/>
+            <text x="10" y="50" font-size="10" fill="#718096" font-weight="500">BPO</text>
+            <text x="56" y="50" font-size="10" fill="#718096" font-weight="500">AI構築</text>
+            <text x="104" y="50" font-size="10" fill="#2471d4" font-weight="700">納品</text>
+            <text x="10" y="64" font-size="8" fill="#94a3b8" opacity="0.4">Month 1</text>
+            <text x="56" y="64" font-size="8" fill="#94a3b8" opacity="0.4">Month 2</text>
+            <text x="104" y="64" font-size="8" fill="#2471d4" opacity="0.4">Month 3</text>
+          </svg>
       </div>
-      <span class="stat-desc">BPO開始と同時にAI学習を開始。3ヶ月で御社専用のAI基盤が完成。</span>
+      <span class="stat-desc">BPO開始と同時にAI学習を開始。<br>3ヶ月で御社専用のAI基盤が完成</span>
       <span class="stat-src">&nbsp;</span>
     </div>
     </div>
