@@ -128,14 +128,18 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.35)}
 ══════════════════════════════ */
 .stats{background:var(--white);padding:64px 0}
 .stats-inner{max-width:var(--max-w);margin:0 auto;padding:0 5%}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--gray-line);border-radius:8px;overflow:hidden}
-.stat{padding:28px 16px;text-align:center;border-right:1px solid var(--gray-line);position:relative;transition:background .2s}
-.stat:hover{background:var(--accent-lt)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--gray-line);border-radius:12px;overflow:hidden}
+.stat{padding:28px 20px;border-right:1px solid var(--gray-line);position:relative;background:var(--white)}
 .stat:last-child{border-right:none}
-.stat-n{font-family:'Noto Serif JP',serif;font-size:38px;color:var(--navy);font-weight:700;line-height:1;margin-bottom:8px;display:block}
+.stat:hover{background:var(--gray-bg)}
+.stat-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:4px}
+.stat-n{font-family:'Noto Serif JP',serif;font-size:42px;color:var(--navy);font-weight:700;line-height:1;display:block}
 .stat-n em{font-style:normal;font-size:20px;color:var(--accent)}
-.stat-l{font-size:12px;color:var(--sub);letter-spacing:.04em;line-height:1.5;height:36px;display:flex;align-items:center;justify-content:center}
-.stat-src{font-size:10px;color:var(--muted);margin-top:6px;display:block;height:16px}
+.stat-badge{font-size:9px;font-weight:700;color:var(--accent);background:var(--accent-lt);padding:2px 8px;border-radius:4px;white-space:nowrap;letter-spacing:.04em}
+.stat-l{font-size:13px;color:var(--sub);letter-spacing:.04em;line-height:1.5;margin-bottom:12px;min-height:36px}
+.stat-chart{height:32px;margin-bottom:10px}
+.stat-desc{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:6px}
+.stat-src{font-size:9px;color:var(--muted);opacity:.7;letter-spacing:.02em;text-transform:uppercase}
 
 /* ══════════════════════════════
    SECTION BASE
@@ -517,23 +521,75 @@ footer{background:#060e1c;color:rgba(255,255,255,.3);text-align:center;padding:2
   <div class="stats-inner">
     <div class="stats-grid">
     <div class="stat fi">
-      <span class="stat-n">78<em>%</em></span>
+      <div class="stat-top">
+        <span class="stat-n">78<em>%</em></span>
+        <span class="stat-badge">深刻</span>
+      </div>
       <span class="stat-l">中小企業の経営者が<br>経理を兼任</span>
-      <span class="stat-src">日本商工会議所 2024年調査</span>
+      <div class="stat-chart">
+        <svg width="100%" height="32" viewBox="0 0 120 32" fill="none">
+          <rect x="0" y="22" width="78" height="10" rx="3" fill="#2471d4" opacity="0.2"/>
+          <rect x="0" y="22" width="78" height="10" rx="3" fill="#2471d4" opacity="0.6"/>
+          <rect x="82" y="22" width="38" height="10" rx="3" fill="#dde2ea"/>
+          <text x="78" y="16" font-size="9" fill="#2471d4" font-weight="600">78%</text>
+          <text x="100" y="16" font-size="9" fill="#718096">22%</text>
+        </svg>
+      </div>
+      <span class="stat-desc">経理専任がいない中小企業では、社長が月末に仕訳を入力している。</span>
+      <span class="stat-src">SRC: 日本商工会議所 2024年調査</span>
     </div>
     <div class="stat fi">
-      <span class="stat-n">480<em>万円</em></span>
+      <div class="stat-top">
+        <span class="stat-n">480<em>万円</em></span>
+        <span class="stat-badge">年間</span>
+      </div>
       <span class="stat-l">経理正社員1名の<br>年間人件費</span>
+      <div class="stat-chart">
+        <svg width="100%" height="32" viewBox="0 0 120 32" fill="none">
+          <rect x="10" y="2" width="14" height="28" rx="3" fill="#2471d4" opacity="0.15"/>
+          <rect x="30" y="8" width="14" height="22" rx="3" fill="#2471d4" opacity="0.25"/>
+          <rect x="50" y="14" width="14" height="16" rx="3" fill="#2471d4" opacity="0.35"/>
+          <rect x="70" y="6" width="14" height="24" rx="3" fill="#2471d4" opacity="0.5"/>
+          <rect x="90" y="0" width="14" height="30" rx="3" fill="#2471d4" opacity="0.8"/>
+          <text x="90" y="30" font-size="8" fill="#2471d4" font-weight="600" text-anchor="middle">480</text>
+        </svg>
+      </div>
+      <span class="stat-desc">給与・社保・福利厚生込みの実コスト。BPO+AI化で1/4以下に。</span>
       <span class="stat-src">&nbsp;</span>
     </div>
     <div class="stat fi">
-      <span class="stat-n">60<em>%</em></span>
+      <div class="stat-top">
+        <span class="stat-n">60<em>%</em></span>
+        <span class="stat-badge">▼ コスト削減</span>
+      </div>
       <span class="stat-l">BPO+AI化による<br>平均コスト削減率</span>
+      <div class="stat-chart">
+        <svg width="100%" height="32" viewBox="0 0 120 32" fill="none">
+          <polyline points="0,28 20,26 40,22 60,18 80,12 100,8 120,4" stroke="#2471d4" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <circle cx="120" cy="4" r="3" fill="#2471d4"/>
+          <rect x="0" y="28" width="120" height="4" rx="2" fill="#dde2ea" opacity="0.5"/>
+        </svg>
+      </div>
+      <span class="stat-desc">AI化完了後、月額コストが半減。内製化でBPO費用ゼロも可能。</span>
       <span class="stat-src">&nbsp;</span>
     </div>
     <div class="stat fi">
-      <span class="stat-n">3<em>ヶ月</em></span>
+      <div class="stat-top">
+        <span class="stat-n">3<em>ヶ月</em></span>
+        <span class="stat-badge">最短</span>
+      </div>
       <span class="stat-l">AI経理基盤の<br>構築期間</span>
+      <div class="stat-chart">
+        <svg width="100%" height="32" viewBox="0 0 120 32" fill="none">
+          <rect x="0" y="12" width="36" height="8" rx="4" fill="#2471d4" opacity="0.3"/>
+          <rect x="40" y="12" width="36" height="8" rx="4" fill="#2471d4" opacity="0.6"/>
+          <rect x="80" y="12" width="36" height="8" rx="4" fill="#2471d4"/>
+          <text x="12" y="28" font-size="8" fill="#718096">BPO</text>
+          <text x="50" y="28" font-size="8" fill="#718096">AI構築</text>
+          <text x="88" y="28" font-size="8" fill="#2471d4" font-weight="600">納品</text>
+        </svg>
+      </div>
+      <span class="stat-desc">BPO開始と同時にAI学習を開始。3ヶ月で御社専用のAI基盤が完成。</span>
       <span class="stat-src">&nbsp;</span>
     </div>
     </div>
